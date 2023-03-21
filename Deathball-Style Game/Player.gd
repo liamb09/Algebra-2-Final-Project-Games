@@ -20,10 +20,5 @@ func _physics_process(delta):
 		velocity.x *= .8
 	if Input.is_action_just_pressed("ui_up"):
 		velocity.y = -500
-		#acc.y = -50
 	velocity.y += gravity
-	#velocity.y += acc.y
-	print(velocity)
 	move_and_slide(velocity)
-	position.x = clamp(position.x, 32, screen_size.x - 32)
-	position.y = clamp(position.y, 32, screen_size.y - 32)
