@@ -12,6 +12,12 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	
 func _physics_process(delta):
+	if Input.is_action_pressed("run"):
+		acc.x = 50
+		speed = 300
+	else:
+		acc.x = 25
+		speed = 100
 	if Input.is_action_pressed("ui_right"):
 		velocity.x = max(velocity.x+acc.x, speed)
 	elif Input.is_action_pressed("ui_left"):
