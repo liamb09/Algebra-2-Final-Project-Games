@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="Game 1"
-run/main_scene="res://Player.tscn"
+config/name="Deathball-Style Game"
+run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
 [display]
