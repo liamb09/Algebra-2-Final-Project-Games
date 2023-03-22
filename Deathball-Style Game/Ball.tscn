@@ -5,7 +5,7 @@
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 0.75
-bounce = 0.71
+bounce = 0.85
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -16,16 +16,20 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 32.0624
+radius = 25.02
 
 [node name="Ball" type="RigidBody2D"]
+position = Vector2( 960, 540 )
 mass = 2.3
 physics_material_override = SubResource( 3 )
 gravity_scale = 10.0
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_Ball_body_entered"]

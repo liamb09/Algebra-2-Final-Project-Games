@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var speed = 100
-var acc = Vector2(25, 0)
-var gravity = 10
+var acc = 25
+var gravity = 15
 var jump_height
 var screen_size
 
@@ -13,18 +13,19 @@ func _ready():
 	
 func _physics_process(delta):
 	if Input.is_action_pressed("run"):
-		acc.x = 50
+		acc = 50
 		speed = 300
 	else:
-		acc.x = 25
+		acc = 25
 		speed = 100
 	if Input.is_action_pressed("ui_right"):
-		velocity.x = max(velocity.x+acc.x, speed)
+		velocity.x = max(velocity.x+acc, speed)
 	elif Input.is_action_pressed("ui_left"):
-		velocity.x = min(velocity.x-acc.x, -speed)
+		velocity.x = min(velocity.x-acc, -speed)
 	else:
 		velocity.x *= .8
 	if Input.is_action_just_pressed("ui_up"):
 		velocity.y = -500
-	velocity.y += gravity
-	move_and_slide(velocity)
+	if not is_on_floor():
+		velocity.y += gravity
+	move_and_slide(velocity, Vector2.UP)
