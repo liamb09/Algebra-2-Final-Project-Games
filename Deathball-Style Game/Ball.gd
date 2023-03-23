@@ -1,7 +1,7 @@
 extends RigidBody2D
 
-
 var screen_size
+var pfv = [100, 0] # pfv = previous frame velocities - this variable will help us determine if it's just barely bouncing
 
 
 # Called when the node enters the scene tree for the first time.

@@ -16,9 +16,10 @@
 position = Vector2( 960, 300 )
 
 [node name="Goal" parent="." instance=ExtResource( 4 )]
+scale = Vector2( 2, 1 )
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]
 position = Vector2( -1, -2 )
 tile_data = PoolIntArray( 196619, 0, 0, 196620, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 393227, 0, 0, 393228, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0 )
 
-[connection signal="body_entered" from="Ball" to="Goal" method="_on_Ball_body_entered"]
+[connection signal="body_entered" from="Goal" to="Goal" method="_on_Goal_body_entered"]
