@@ -8,6 +8,8 @@ var jump_height
 var screen_size
 var colliding_with
 const max_y_velocity = 2000
+var inertia = 300
+var touching_wall_side # which side of the player is touching the wall
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,10 +27,12 @@ func _physics_process(delta):
 	if velocity.y > max_y_velocity:
 		velocity.y = max_y_velocity
 	colliding_with = []
-	move_and_slide(velocity, Vector2.UP)
-	for i in range(get_slide_count() - 1):
-		var collision = get_slide_collision(i)
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("bodies"):
+			collision.collider.apply_central_impulse(-collision.normal * inertia)
 		colliding_with.append(collision.collider.name)
+	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4, false)
 	if is_on_floor():
 		velocity.y = 0
 	if colliding_with.find("TileMap") == -1 or is_on_ceiling():
@@ -39,9 +43,16 @@ func _physics_process(delta):
 	else:
 		acc = 25
 		speed = 100
-	if Input.is_action_pressed("ui_right") && (not is_on_wall() or (is_on_wall() and colliding_with.size() == 1 and colliding_with[0] == "Outline")):
+	if is_on_wall():
+		if $LeftRayCast.is_colliding():
+			touching_wall_side = "left"
+		elif $RightRayCast.is_colliding():
+			touching_wall_side = "right"
+	else:
+		touching_wall_side = ""
+	if Input.is_action_pressed("ui_right") and touching_wall_side != "right":
 		velocity.x = max(velocity.x+acc, speed)
-	elif Input.is_action_pressed("ui_left")  && (not is_on_wall() or (is_on_wall() and colliding_with.size() == 1 and colliding_with[0] == "Outline")):
+	elif Input.is_action_pressed("ui_left") and touching_wall_side != "left":
 		velocity.x = min(velocity.x-acc, -speed)
 	else:
 		velocity.x *= .8

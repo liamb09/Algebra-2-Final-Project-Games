@@ -23,3 +23,11 @@ frames = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+
+[node name="LeftRayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -40, 0 )
+
+[node name="RightRayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 40, 0 )
