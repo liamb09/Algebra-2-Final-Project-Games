@@ -1,0 +1,65 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Ball",
+"language": "GDScript",
+"path": "res://Ball.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Opponent",
+"language": "GDScript",
+"path": "res://Opponent.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Opponent2",
+"language": "GDScript",
+"path": "res://Opponent2.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player2",
+"language": "GDScript",
+"path": "res://Player2.gd"
+} ]
+_global_script_class_icons={
+"Ball": "",
+"Opponent": "",
+"Opponent2": "",
+"Player": "",
+"Player2": ""
+}
+
+[application]
+
+config/name="Pong v3.0"
+run/main_scene="res://Level.tscn"
+
+[display]
+
+window/size/width=720
+window/size/height=720
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
