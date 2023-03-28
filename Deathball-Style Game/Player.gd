@@ -10,10 +10,13 @@ var colliding_with
 const max_y_velocity = 2000
 var inertia = 300
 var touching_wall_side # which side of the player is touching the wall
+export var start_pos = Vector2.ZERO
+export var control_mode = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	position = start_pos
 	
 func _physics_process(delta):
 	if position.x < 32:
@@ -32,6 +35,7 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("bodies"):
 			collision.collider.apply_central_impulse(-collision.normal * inertia)
 		colliding_with.append(collision.collider.name)
+	print(colliding_with)
 	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4, false)
 	if is_on_floor():
 		velocity.y = 0
@@ -50,11 +54,11 @@ func _physics_process(delta):
 			touching_wall_side = "right"
 	else:
 		touching_wall_side = ""
-	if Input.is_action_pressed("ui_right") and touching_wall_side != "right":
+	if Input.is_action_pressed(control_mode+"ui_right") and touching_wall_side != "right":
 		velocity.x = max(velocity.x+acc, speed)
-	elif Input.is_action_pressed("ui_left") and touching_wall_side != "left":
+	elif Input.is_action_pressed(control_mode+"ui_left") and touching_wall_side != "left":
 		velocity.x = min(velocity.x-acc, -speed)
 	else:
 		velocity.x *= .8
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed(control_mode+"ui_up"):
 		velocity.y = -500

@@ -32,3 +32,8 @@ frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
+
+[node name="Up" type="RayCast2D" parent="."]
+rotation = 0.445059
+cast_to = Vector2( 0, -35 )
+collision_mask = 2
