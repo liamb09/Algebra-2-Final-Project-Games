@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Log.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Police.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Firetruck.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+var ambulance = load(\"res://Enemy.tscn\")
+var player = load(\"res://Player.tscn\")
+var Log = load(\"res://Log.tscn\")
+var Firetruck = load(\"res://Firetruck.tscn\")
+var Police = load(\"res://Police.tscn\")
+var timer2 = 0
+var timer1 = 0
+var timer3 = 0
+var timer = 0
+
+func init_at_intervals(sprite, pos_x, pos_y, interval_time):
+	while pos_x < get_viewport().size.x:
+		var sprite_instnance = sprite.instance()
+		sprite_instnance.position.y = pos_y
+		sprite_instnance.position.x = pos_x
+		add_child(sprite_instnance)
+		pos_x += interval_time
+
+func _ready():
+	var player_instance = player.instance()
+	player_instance.position.x = 400
+	player_instance.position.y = 800
+	add_child(player_instance)
+	init_at_intervals(ambulance, 16, 400, 200)
+	init_at_intervals(Log, 16, 200, 200)
+	init_at_intervals(Firetruck, 16, 500, 200)
+	init_at_intervals(Police, 16, 300, 200)
+
+func _process(delta):
+	#spawn_at_intervals(, 400, 200)
+	timer1 += 1
+	timer2 += 1
+	timer3 += 1
+	timer += 1
+	if timer1 == 200:
+		var path = \"res://Enemy.tscn\"
+		var enemy = load(path)
+		var enemyinstance = enemy.instance()
+		enemyinstance.position.y = 400
+		add_child(enemyinstance)
+		timer1 = 0
+	if timer2 == 100:
+		var path_log = \"res://Log.tscn\"
+		var Log = load(path_log)
+		var Loginstance = Log.instance()
+		Loginstance.position.y = 200
+		add_child(Loginstance)
+		timer2 = 0
+	if timer3 == 100:
+		var path_log_one = \"res://Firetruck.tscn\"
+		var Log = load(path_log_one)
+		var Loginstance = Log.instance()
+		Loginstance.position.y = 500
+		add_child(Loginstance)
+		timer2 = 0
+	if timer == 100:
+		var path_log_two = \"res://Police.tscn\"
+		var Log = load(path_log_two)
+		var Loginstance = Log.instance()
+		Loginstance.position.y = 300
+		add_child(Loginstance)
+		timer2 = 0
+"
+
+[node name="MainScene" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1520, 168 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 441, 721 )
+
+[node name="Log" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 100, 101 )
+
+[node name="Firetruck" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 100, 101 )
+
+[node name="Police" parent="." instance=ExtResource( 4 )]
+visible = false
