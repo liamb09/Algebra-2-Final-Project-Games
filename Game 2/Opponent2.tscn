@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 60 )
 
-[node name="Opponent2" type="KinematicBody2D"]
-position = Vector2( 126, 0 )
+[node name="Opponent2" type="KinematicBody2D" groups=["Opp2Group"]]
+position = Vector2( 129, 0 )
 rotation = 1.5708
 script = ExtResource( 2 )
 __meta__ = {
@@ -21,3 +21,16 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 17, 63 )
 shape = SubResource( 1 )
+
+[node name="countdownTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="countdownTimer1" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="countdownTimer2" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="countdownTimer" to="." method="_on_countdownTimer_timeout"]
+[connection signal="timeout" from="countdownTimer1" to="." method="_on_countdownTimer1_timeout"]
+[connection signal="timeout" from="countdownTimer2" to="." method="_on_countdownTimer2_timeout"]

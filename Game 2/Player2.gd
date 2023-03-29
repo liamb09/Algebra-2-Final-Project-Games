@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player2
 
 var speed = 400
 var screen_size = Vector2.ZERO
@@ -16,3 +17,24 @@ func _physics_process(delta):
 
 	position += velocity * delta
 	position.x = clamp(position.x, 122+20, 720-20)
+
+func powerupChangeSpeed():
+	speed = 200
+	$countdownTimer.start()
+
+func _on_countdownTimer_timeout():
+	speed = 400
+
+func powerupIncreaseSpeed():
+	speed = 900
+	$countdownTimer1.start()
+
+func _on_countdownTimer1_timeout():
+	speed = 400
+
+func freezePow():
+	speed = 0
+	$countdownTimer2.start()
+
+func _on_countdownTimer2_timeout():
+	speed = 400

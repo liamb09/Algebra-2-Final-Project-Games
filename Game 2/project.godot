@@ -8,6 +8,40 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Ball",
+"language": "GDScript",
+"path": "res://Ball.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Opponent",
+"language": "GDScript",
+"path": "res://Opponent.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Opponent2",
+"language": "GDScript",
+"path": "res://Opponent2.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player2",
+"language": "GDScript",
+"path": "res://Player2.gd"
+} ]
+_global_script_class_icons={
+"Ball": "",
+"Opponent": "",
+"Opponent2": "",
+"Player": "",
+"Player2": ""
+}
+
 [application]
 
 config/name="Pong v3.0"

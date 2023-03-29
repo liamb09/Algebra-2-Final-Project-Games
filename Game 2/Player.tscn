@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1.844, 9.925 )
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=["PlayerGroup"]]
 position = Vector2( 23, 66 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -21,3 +21,16 @@ texture = ExtResource( 1 )
 position = Vector2( -1.752, -1 )
 scale = Vector2( 7.6, 6 )
 shape = SubResource( 1 )
+
+[node name="countdownTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="countdownTimer1" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="countdownTimer2" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="countdownTimer" to="." method="_on_countdownTimer_timeout"]
+[connection signal="timeout" from="countdownTimer1" to="." method="_on_countdownTimer1_timeout"]
+[connection signal="timeout" from="countdownTimer2" to="." method="_on_countdownTimer2_timeout"]

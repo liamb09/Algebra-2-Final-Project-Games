@@ -1,10 +1,12 @@
 extends KinematicBody2D
+class_name Opponent
 
-var speed = 600
+var speed = 700
 #Easy is 300 speed
 #Medium is 420 speed
 #Hard is 600 speed
 var ball
+var timer
 
 func _ready():
 	ball = get_parent().find_node("Ball")
@@ -19,3 +21,25 @@ func get_opponent_direction():
 		if ball.position.y > position.y: return 1
 		else: return -1
 	else: return 0
+
+func powerupChangeSpeed():
+	speed = 200
+	$countdownTimer.start()
+
+
+func _on_countdownTimer_timeout():
+	speed = 700
+
+func powerupIncreaseSpeed():
+	speed = 900
+	$countdownTimer1.start()
+	
+func _on_countdownTimer1_timeout():
+	speed = 700
+
+func freezePow():
+	speed = 0
+	$countdownTimer2.start()
+
+func _on_countdownTimer2_timeout():
+	speed = 700
