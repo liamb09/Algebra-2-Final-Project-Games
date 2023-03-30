@@ -17,7 +17,15 @@ var Police = load(\"res://Police.tscn\")
 var timer2 = 0
 var timer1 = 0
 var timer3 = 0
-var timer = 0
+var timer4 = 0
+func spawn_at_intervals(sprite_path, pos_y, interval_time, timer):
+	timer += 1
+	if timer == interval_time:
+		var spriteinstance = sprite_path.instance()
+		spriteinstance.position.y = 400
+		add_child(spriteinstance)
+		timer = 0
+	return timer
 
 func init_at_intervals(sprite, pos_x, pos_y, interval_time):
 	while pos_x < get_viewport().size.x:
@@ -39,38 +47,10 @@ func _ready():
 
 func _process(delta):
 	#spawn_at_intervals(, 400, 200)
-	timer1 += 1
-	timer2 += 1
-	timer3 += 1
-	timer += 1
-	if timer1 == 200:
-		var path = \"res://Enemy.tscn\"
-		var enemy = load(path)
-		var enemyinstance = enemy.instance()
-		enemyinstance.position.y = 400
-		add_child(enemyinstance)
-		timer1 = 0
-	if timer2 == 100:
-		var path_log = \"res://Log.tscn\"
-		var Log = load(path_log)
-		var Loginstance = Log.instance()
-		Loginstance.position.y = 200
-		add_child(Loginstance)
-		timer2 = 0
-	if timer3 == 100:
-		var path_log_one = \"res://Firetruck.tscn\"
-		var Log = load(path_log_one)
-		var Loginstance = Log.instance()
-		Loginstance.position.y = 500
-		add_child(Loginstance)
-		timer2 = 0
-	if timer == 100:
-		var path_log_two = \"res://Police.tscn\"
-		var Log = load(path_log_two)
-		var Loginstance = Log.instance()
-		Loginstance.position.y = 300
-		add_child(Loginstance)
-		timer2 = 0
+	timer1 = spawn_at_intervals(ambulance, 400, 300, timer1)
+	timer2 = spawn_at_intervals(Log, 200, 300, timer1)
+	timer3 = spawn_at_intervals(Firetruck, 500, 300, timer2)
+	timer4 = spawn_at_intervals(Police, 300, 300, timer3)
 "
 
 [node name="MainScene" type="Node2D"]
