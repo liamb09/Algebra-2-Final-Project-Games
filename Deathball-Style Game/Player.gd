@@ -7,7 +7,7 @@ var gravity = 15
 var jump_height
 var screen_size
 var colliding_with
-const max_y_velocity = 2000
+const max_y_velocity = 1800
 var inertia = 300
 var touching_wall_side # which side of the player is touching the wall
 export var start_pos = Vector2.ZERO
@@ -32,10 +32,9 @@ func _physics_process(delta):
 	colliding_with = []
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
-		if collision.collider.is_in_group("bodies"):
+		if collision.collider.is_in_group("bodies") and not $DownRayCast.is_colliding():
 			collision.collider.apply_central_impulse(-collision.normal * inertia)
 		colliding_with.append(collision.collider.name)
-	print(colliding_with)
 	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4, false)
 	if is_on_floor():
 		velocity.y = 0

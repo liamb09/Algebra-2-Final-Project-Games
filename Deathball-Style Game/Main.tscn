@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Teleports.tscn" type="PackedScene" id=6]
+[ext_resource path="res://PointDisplay.tscn" type="PackedScene" id=7]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -63,11 +64,21 @@ contact_monitor = true
 [node name="Goal" parent="." instance=ExtResource( 4 )]
 position = Vector2( 8, 540 )
 scale = Vector2( 2, 1.5 )
+goal_for = "Player 2"
+
+[node name="Goal2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1912, 540 )
+scale = Vector2( 2, 1.5 )
+input_pickable = false
+goal_for = "Player 1"
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]
 tile_set = SubResource( 3 )
 
 [node name="Teleports" parent="." instance=ExtResource( 6 )]
 
+[node name="PointDisplay" parent="." instance=ExtResource( 7 )]
+
 [connection signal="body_entered" from="Goal" to="Goal" method="_on_Goal_body_entered"]
+[connection signal="body_entered" from="Goal2" to="Goal2" method="_on_Goal_body_entered"]
 [connection signal="teleport" from="Teleports" to="Ball" method="_on_Teleports_teleport"]
