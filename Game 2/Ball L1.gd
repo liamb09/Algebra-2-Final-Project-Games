@@ -1,5 +1,5 @@
 extends KinematicBody2D
-class_name Ball
+class_name Ball1
 
 var speed = 400
 var velocity = Vector2.ZERO

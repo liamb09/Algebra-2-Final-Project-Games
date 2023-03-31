@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Screen Recording 2023-03-29 at 7.25.11 PM.webm" type="VideoStream" id=1]
+[ext_resource path="res://PowerUps/Intro.gd" type="Script" id=3]
+[ext_resource path="res://PowerUps/VideoPlayer.gd" type="Script" id=4]
+[ext_resource path="res://Assets/ka1.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Intro" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 722.0
+margin_bottom = 720.0
+theme = SubResource( 3 )
+stream = ExtResource( 1 )
+autoplay = true
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 723.0
+margin_bottom = 723.0
+color = Color( 1, 1, 1, 0.486275 )
+
+[node name="CountdownLabel" type="Label" parent="."]
+margin_left = 140.0
+margin_top = -7.0
+margin_right = 360.0
+margin_bottom = 116.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.105882, 0.0392157, 0.909804, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Power"
+align = 1
+valign = 1
+
+[node name="CountdownLabel2" type="Label" parent="."]
+margin_left = 182.0
+margin_top = 96.0
+margin_right = 358.0
+margin_bottom = 219.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0.105882, 0.0392157, 0.909804, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Pong"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 190.0
+margin_top = 339.0
+margin_right = 540.0
+margin_bottom = 405.0
+custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 4 )
+text = "1 Player"
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 190.0
+margin_top = 419.0
+margin_right = 540.0
+margin_bottom = 485.0
+custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 5 )
+text = "2 Player"
+
+[node name="Button3" type="Button" parent="."]
+margin_left = 75.0
+margin_top = 549.0
+margin_right = 645.0
+margin_bottom = 615.0
+custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 6 )
+text = "Return to Home"
+
+[connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
