@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Teleports.tscn" type="PackedScene" id=6]
 [ext_resource path="res://PointDisplay.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Main.gd" type="Script" id=8]
+[ext_resource path="res://Assets/Corner.png" type="Texture" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -48,8 +50,37 @@ resource_local_to_scene = true
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
+2/name = "Corner.png 2"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 32, 0, 32, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Corner.png 3"
+3/texture = ExtResource( 9 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
 
 [node name="Main" type="Node"]
+script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 start_pos = Vector2( 1420, 500 )
@@ -74,11 +105,18 @@ goal_for = "Player 1"
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]
 tile_set = SubResource( 3 )
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 65536, 0, 0, 65537, 3, 0, 65564, -1610612733, 0, 65565, 0, 0, 131072, 0, 0, 131101, 0, 0, 196608, 0, 0, 196637, 0, 0, 262144, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262158, 0, 0, 262159, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 262168, 0, 0, 262173, 0, 0, 327680, 0, 0, 327709, 0, 0, 393216, 0, 0, 393245, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524308, 0, 0, 524309, 0, 0, 524310, 0, 0, 524311, 0, 0, 524312, 0, 0, 655360, 0, 0, 655389, 0, 0, 720896, 0, 0, 720925, 0, 0, 786432, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786440, 0, 0, 786441, 0, 0, 786446, 0, 0, 786447, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 786456, 0, 0, 786461, 0, 0, 851968, 0, 0, 851997, 0, 0, 917504, 0, 0, 917533, 0, 0, 983040, 0, 0, 983041, -1073741821, 0, 983068, 1610612739, 0, 983069, 0, 0, 1048576, 0, 0, 1048577, 0, 0, 1048578, 0, 0, 1048579, 0, 0, 1048580, 0, 0, 1048581, 0, 0, 1048582, 0, 0, 1048583, 0, 0, 1048584, 0, 0, 1048585, 0, 0, 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1048593, 0, 0, 1048596, 0, 0, 1048597, 0, 0, 1048598, 0, 0, 1048599, 0, 0, 1048600, 0, 0, 1048601, 0, 0, 1048602, 0, 0, 1048603, 0, 0, 1048604, 0, 0, 1048605, 0, 0 )
 
 [node name="Teleports" parent="." instance=ExtResource( 6 )]
 
 [node name="PointDisplay" parent="." instance=ExtResource( 7 )]
+position = Vector2( 32, 337 )
+scale = Vector2( 2, 2 )
 
-[connection signal="body_entered" from="Goal" to="Goal" method="_on_Goal_body_entered"]
-[connection signal="body_entered" from="Goal2" to="Goal2" method="_on_Goal_body_entered"]
+[node name="PointDisplay2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1888, 337 )
+scale = Vector2( 2, 2 )
+
+[connection signal="body_entered" from="Goal" to="." method="_on_Goal_body_entered"]
+[connection signal="body_entered" from="Goal2" to="." method="_on_Goal2_body_entered"]
 [connection signal="teleport" from="Teleports" to="Ball" method="_on_Teleports_teleport"]

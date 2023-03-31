@@ -12,11 +12,8 @@ func _integrate_forces(state):
 		physics_material_override.absorbent = 1
 	else:
 		physics_material_override.absorbent = 0
-	print(linear_velocity)
-	print(global_position)
 
 func _on_Teleports_teleport(direction):
-	print("teleport")
 	if direction == "left":
 		set_global_position(Vector2(screen_size.x - 32, get_position().y))
 	elif direction == "right":
@@ -24,4 +21,4 @@ func _on_Teleports_teleport(direction):
 	elif direction == "down":
 		set_global_position(Vector2(get_position().x, 32))
 	elif direction == "up":
-		set_global_position(Vector2(get_position().x, screen_size.x - 32))
+		set_global_position(Vector2(get_position().x, screen_size.y - 32))

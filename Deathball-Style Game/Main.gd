@@ -1,21 +1,28 @@
 extends Node
 
+export var player1points = 5
+export var player2points = 5
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
+func _process(delta):
+	if player1points > 0 and player2points > 0:
+		$PointDisplay.show()
+		$PointDisplay2.show()
+		$PointDisplay.frame = 5 - player2points
+		$PointDisplay2.frame = 5 - player1points
+	else:
+		$PointDisplay.hide()
+		$PointDisplay2.hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 
 func _on_Goal_body_entered(body):
-	if body.name == "Ball":
-		print("Goal!")
+	if body.get_name() == "Ball":
+		player1points -= 1
+
+
+func _on_Goal2_body_entered(body):
+	if body.get_name() == "Ball":
+		player2points -= 1

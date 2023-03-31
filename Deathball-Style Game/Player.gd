@@ -35,7 +35,7 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("bodies") and not $DownRayCast.is_colliding():
 			collision.collider.apply_central_impulse(-collision.normal * inertia)
 		colliding_with.append(collision.collider.name)
-	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4, false)
+	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4 - 0.04, false) 
 	if is_on_floor():
 		velocity.y = 0
 	if colliding_with.find("TileMap") == -1 or is_on_ceiling():
