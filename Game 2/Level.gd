@@ -17,7 +17,6 @@ func _ready():
 	$Opponent.position.x = 720 - 35
 	$Player2.position.y = 720-50
 	$Opponent2.position.y = 15
-	$Opponent2.position.x = 420
 
 func _on_Left_body_entered(body):
 	$Ball.position = Vector2(360,360)
@@ -29,7 +28,6 @@ func _on_Left_body_entered(body):
 	$Opponent.position.x = 720 - 35
 	$Player2.position.y = 720-50
 	$Opponent2.position.y = 15
-	$Opponent2.position = Vector2(420+40,15)
 	#$ScoreSound.play()
 
 func _on_Right_body_entered(body):
@@ -42,7 +40,6 @@ func _on_Right_body_entered(body):
 	$Opponent.position.x = 720 - 35
 	$Player2.position.y = 720-50
 	$Opponent2.position.y = 15
-	$Opponent2.position = Vector2(420+40,15)
 	#$ScoreSound.play()
 
 func _on_Up_body_entered(body):
@@ -55,7 +52,6 @@ func _on_Up_body_entered(body):
 	$Opponent.position.x = 720 - 35
 	$Player2.position.y = 720-50
 	$Opponent2.position.y = 15
-	$Opponent2.position = Vector2(420+40,15)
 	#$ScoreSound.play()
 
 
@@ -69,7 +65,6 @@ func _on_Down_body_entered(body):
 	$Opponent.position.x = 720 - 35
 	$Player2.position.y = 720-50
 	$Opponent2.position.y = 15
-	$Opponent2.position = Vector2(420+40,15)
 	#$ScoreSound.play()
 
 func _process(delta):

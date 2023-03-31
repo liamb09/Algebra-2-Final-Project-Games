@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://PowerUps/VideoPlayer.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Screen Recording 2023-03-29 at 7.25.11 PM.webm" type="VideoStream" id=2]
 [ext_resource path="res://Assets/ka1.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://PowerUps/GameOver.gd" type="Script" id=4]
+[ext_resource path="res://PowerUps/Tutorial Choice.gd" type="Script" id=4]
 
 [sub_resource type="Theme" id=1]
 
@@ -18,7 +18,17 @@ font_data = ExtResource( 3 )
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 1 )
 
-[node name="Game Over" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="Tutorial Choice" type="Node2D"]
 script = ExtResource( 4 )
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
@@ -44,31 +54,42 @@ margin_bottom = 166.0
 rect_scale = Vector2( 2, 2 )
 custom_colors/font_color = Color( 0.105882, 0.0392157, 0.909804, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Game
-Over"
+text = "Learn
+About"
 align = 1
 valign = 1
 
-[node name="Play Again" type="Button" parent="."]
-margin_left = 161.0
+[node name="Button" type="Button" parent="."]
+margin_left = 190.0
 margin_top = 339.0
-margin_right = 559.0
+margin_right = 540.0
 margin_bottom = 405.0
 custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
 custom_fonts/font = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "Play Again"
+text = "1 Player"
 
-[node name="Ext Game" type="Button" parent="."]
-margin_left = 177.0
-margin_top = 439.0
-margin_right = 543.0
-margin_bottom = 505.0
+[node name="Button2" type="Button" parent="."]
+margin_left = 190.0
+margin_top = 419.0
+margin_right = 540.0
+margin_bottom = 485.0
 custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
 custom_fonts/font = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "Exit Game"
+custom_styles/normal = SubResource( 5 )
+text = "2 Player"
+
+[node name="Return" type="Button" parent="."]
+margin_left = 251.0
+margin_top = 549.0
+margin_right = 469.0
+margin_bottom = 615.0
+custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+text = "Back"
 
 [connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
-[connection signal="pressed" from="Play Again" to="." method="_on_Play_Again_pressed"]
-[connection signal="pressed" from="Ext Game" to="." method="_on_Ext_Game_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]

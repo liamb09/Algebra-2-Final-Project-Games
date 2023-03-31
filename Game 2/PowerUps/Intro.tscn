@@ -88,14 +88,26 @@ text = "2 Player"
 
 [node name="Button3" type="Button" parent="."]
 margin_left = 75.0
-margin_top = 549.0
+margin_top = 579.0
 margin_right = 645.0
-margin_bottom = 615.0
+margin_bottom = 645.0
 custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
 custom_fonts/font = SubResource( 2 )
 custom_styles/normal = SubResource( 6 )
 text = "Return to Home"
 
+[node name="Button4" type="Button" parent="."]
+margin_left = 190.0
+margin_top = 499.0
+margin_right = 540.0
+margin_bottom = 565.0
+custom_colors/font_color = Color( 0.0627451, 0.623529, 0.690196, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 4 )
+text = "Tutorial"
+
 [connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_Button4_pressed"]
