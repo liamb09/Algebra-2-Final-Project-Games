@@ -1,8 +1,10 @@
 extends Node2D
 
+func _ready():
+	$Button.grab_focus()
+
 func _on_Button_pressed():
 	get_tree().change_scene("res://1 Player Tut.tscn")
-
 
 func _on_Button2_pressed():
 	get_tree().change_scene("res://2 Player Tut.tscn")

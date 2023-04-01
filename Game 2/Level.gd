@@ -84,8 +84,10 @@ func _process(delta):
 		powerupInstance.position = random_pos
 		add_child(powerupInstance)
 		timer = 0
-	if (PlayerScore == 10) or (OpponentScore == 10):
+	if (OpponentScore == 10):
 		cut_scene()
+	if (PlayerScore == 10):
+		cut_scene_one()
 	
 func _on_CountdownTimer_timeout():
 	get_tree().call_group('BallGroup','restart_ball')
@@ -93,3 +95,6 @@ func _on_CountdownTimer_timeout():
 
 func cut_scene():
 	get_tree().change_scene("res://PowerUps/GameOver.tscn")
+
+func cut_scene_one():
+	get_tree().change_scene("res://You win.tscn")

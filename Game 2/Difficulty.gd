@@ -1,6 +1,7 @@
 extends Node2D
 
-
+func _ready():
+	$Beginner.grab_focus()
 
 func _on_Experienced_pressed():
 	get_tree().change_scene("res://Level.tscn")
