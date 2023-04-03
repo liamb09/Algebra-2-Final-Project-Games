@@ -1,9 +1,17 @@
-extends Area2D
+extends KinematicBody2D
 
-const speed = 50
+class_name Enemy
+
+export var speed = 0
+export var sprite_path = ""
+onready var sprite = get_node(sprite_path)
+
+func _ready():
+	if speed > 0:
+		sprite.flip_h = false
+	elif speed < 0:
+		sprite.flip_h = true
 
 func _process(delta):
 	position.x += speed*delta
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()

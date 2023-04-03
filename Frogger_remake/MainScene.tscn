@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Ambulance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Log.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Police.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Firetruck.tscn" type="PackedScene" id=5]
@@ -9,7 +9,7 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-var ambulance = load(\"res://Enemy.tscn\")
+var ambulance = load(\"res://Ambulance.tscn\")
 var player = load(\"res://Player.tscn\")
 var Log = load(\"res://Log.tscn\")
 var Firetruck = load(\"res://Firetruck.tscn\")
@@ -18,59 +18,72 @@ var timer2 = 0
 var timer1 = 0
 var timer3 = 0
 var timer4 = 0
+
 func spawn_at_intervals(sprite_path, pos_y, interval_time, timer):
+	var screen_size_x = get_viewport().size.x
 	timer += 1
 	if timer == interval_time:
 		var spriteinstance = sprite_path.instance()
-		spriteinstance.position.y = 400
-		add_child(spriteinstance)
+		spriteinstance.position.y = pos_y
+		if spriteinstance.speed > 0:
+			spriteinstance.position.x = 0
+			add_child(spriteinstance)
+		if spriteinstance.speed < 0:
+			spriteinstance.position.x = screen_size_x
+			add_child(spriteinstance)
 		timer = 0
 	return timer
 
 func init_at_intervals(sprite, pos_x, pos_y, interval_time):
-	while pos_x < get_viewport().size.x:
+	var screen_size_x = get_viewport().size.x
+	while pos_x < screen_size_x and pos_x > 0:
 		var sprite_instnance = sprite.instance()
 		sprite_instnance.position.y = pos_y
-		sprite_instnance.position.x = pos_x
-		add_child(sprite_instnance)
-		pos_x += interval_time
+		if sprite_instnance.speed > 0:
+			sprite_instnance.position.x = pos_x
+			add_child(sprite_instnance)
+			pos_x += interval_time
+		if sprite_instnance.speed < 0:
+			sprite_instnance.position.x = screen_size_x - pos_x
+			add_child(sprite_instnance)
+			pos_x += interval_time
 
 func _ready():
 	var player_instance = player.instance()
 	player_instance.position.x = 400
-	player_instance.position.y = 800
+	player_instance.position.y = 400
 	add_child(player_instance)
-	init_at_intervals(ambulance, 16, 400, 200)
+	init_at_intervals(ambulance, 16, 288, 300)
 	init_at_intervals(Log, 16, 200, 200)
-	init_at_intervals(Firetruck, 16, 500, 200)
-	init_at_intervals(Police, 16, 300, 200)
+	init_at_intervals(Firetruck, 16, 256, 300)
+	init_at_intervals(Police, 16, 320, 200)
 
 func _process(delta):
-	#spawn_at_intervals(, 400, 200)
-	timer1 = spawn_at_intervals(ambulance, 400, 300, timer1)
-	timer2 = spawn_at_intervals(Log, 200, 300, timer1)
-	timer3 = spawn_at_intervals(Firetruck, 500, 300, timer2)
-	timer4 = spawn_at_intervals(Police, 300, 300, timer3)
+	timer4 = spawn_at_intervals(ambulance, 400, 600, timer4)
+	timer1 = spawn_at_intervals(Log, 200, 300, timer1)
+	timer2 = spawn_at_intervals(Firetruck, 500, 600, timer2)
+	timer3 = spawn_at_intervals(Police, 300, 600, timer3)
 "
 
 [node name="MainScene" type="Node2D"]
 script = SubResource( 1 )
 
-[node name="Enemy" parent="." instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 1520, 168 )
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
 visible = false
-position = Vector2( 441, 721 )
+position = Vector2( -296, 896 )
 
 [node name="Log" parent="." instance=ExtResource( 3 )]
 visible = false
-position = Vector2( 100, 101 )
+position = Vector2( -736, 368 )
 
 [node name="Firetruck" parent="." instance=ExtResource( 5 )]
 visible = false
-position = Vector2( 100, 101 )
+position = Vector2( -688, 160 )
 
 [node name="Police" parent="." instance=ExtResource( 4 )]
 visible = false
+position = Vector2( -456, 352 )
+
+[node name="Ambulance" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( -264, 520 )

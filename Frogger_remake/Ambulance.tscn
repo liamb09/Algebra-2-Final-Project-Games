@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Ambulance.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 420, 130 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 340, 130 )
+
+[node name="Ambulance" type="KinematicBody2D"]
+scale = Vector2( 0.05, 0.05 )
+script = ExtResource( 1 )
+speed = -70
+sprite_path = "AmbulanceSprite"
+
+[node name="AmbulanceSprite" type="Sprite" parent="."]
+position = Vector2( -43, 32 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -160, -30 )
+shape = SubResource( 1 )
+
+[node name="Ambulance_Collide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ambulance_Collide"]
+position = Vector2( -100, -30 )
+shape = SubResource( 2 )
