@@ -75,4 +75,4 @@ text = "Exit Game"
 
 [connection signal="finished" from="VideoPlayer" to="VideoPlayer" method="_on_VideoPlayer_finished"]
 [connection signal="pressed" from="Play Again" to="." method="_on_Play_Again_pressed"]
-[connection signal="pressed" from="Exit Game" to="." method="_on_Ext_Game_pressed"]
+[connection signal="pressed" from="Exit Game" to="." method="_on_Exit_Game_pressed"]

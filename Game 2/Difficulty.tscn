@@ -25,7 +25,7 @@ font_data = ExtResource( 3 )
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0, 0, 0, 1 )
 
-[node name="Difficulty" type="Node2D"]
+[node name="Difficulty" type="Node2D" groups=["DiffGroup"]]
 script = ExtResource( 4 )
 
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
