@@ -2,16 +2,26 @@ extends RigidBody2D
 
 var screen_size
 var prev_linear_velocity
+var spawn_pos = Vector2(960, 400)
 
 func _ready():
 	screen_size = get_viewport_rect().size
-		
+	reset()
+
+func reset():
+	position = spawn_pos
+
 func _integrate_forces(state):
 	$Up.global_rotation_degrees = 0
-	if abs(linear_velocity.y) <= 100 or $Up.is_colliding():
+	$Down.global_rotation_degrees = 0
+	if abs(linear_velocity.y) <= 150 or $Up.is_colliding():
 		physics_material_override.absorbent = 1
 	else:
 		physics_material_override.absorbent = 0
+	if $Down.is_colliding():
+		gravity_scale = 0
+	else:
+		gravity_scale = 10
 
 func _on_Teleports_teleport(direction):
 	if direction == "left":

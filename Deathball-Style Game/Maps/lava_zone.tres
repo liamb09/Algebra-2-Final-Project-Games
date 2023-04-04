@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_resource type="TileSet" load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Block.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Corner.png" type="Texture" id=2]
@@ -43,7 +43,7 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 384, 0, 384 )
 [sub_resource type="ConvexPolygonShape2D" id=23]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 480, 0, 480 )
 
-[sub_resource type="TileSet" id=3]
+[resource]
 0/name = "Block.jpg 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -323,7 +323,3 @@ points = PoolVector2Array( 0, 0, 64, 0, 64, 480, 0, 480 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 12/z_index = 0
-
-[node name="TileMap" type="TileMap"]
-tile_set = SubResource( 3 )
-format = 1

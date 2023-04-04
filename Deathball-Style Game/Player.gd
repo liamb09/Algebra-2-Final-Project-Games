@@ -16,8 +16,11 @@ export var control_mode = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	position = start_pos
+	reset()
 	
+func reset():
+	position = start_pos
+
 func _physics_process(delta):
 	if position.x < 32:
 		position.x = screen_size.x - 32
@@ -40,12 +43,6 @@ func _physics_process(delta):
 		velocity.y = 0
 	if colliding_with.find("TileMap") == -1 or is_on_ceiling():
 		velocity.y += gravity
-	if Input.is_action_pressed("run"):
-		acc = 50
-		speed = 300
-	else:
-		acc = 25
-		speed = 100
 	if is_on_wall():
 		if $LeftRayCast.is_colliding():
 			touching_wall_side = "left"

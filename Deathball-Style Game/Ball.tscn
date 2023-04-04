@@ -21,7 +21,7 @@ radius = 25.02
 
 [node name="Ball" type="RigidBody2D"]
 position = Vector2( 960, 540 )
-collision_layer = 3
+collision_layer = 11
 mass = 2.3
 physics_material_override = SubResource( 3 )
 gravity_scale = 10.0
@@ -39,4 +39,11 @@ rotation = 0.445059
 enabled = true
 cast_to = Vector2( 0, -30 )
 collision_mask = 2
+collide_with_areas = true
+
+[node name="Down" type="RayCast2D" parent="."]
+rotation = 0.445059
+enabled = true
+cast_to = Vector2( 0, 30 )
+collision_mask = 4
 collide_with_areas = true
