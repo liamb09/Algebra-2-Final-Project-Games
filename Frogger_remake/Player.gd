@@ -1,5 +1,7 @@
 extends Area2D
 
+class_name player
+
 const tile_size = 32
 onready var player = $PlayerSprite
 var speed = 0
@@ -26,18 +28,3 @@ func _process(delta):
 func move(dir):
 	position += inputs[dir] * tile_size
 
-func _on_EnemyCollide_area_entered(area):
-	if ("Police" in area.name 
-		or "Firetruck" in area.name 
-		or "Ambulance" in area.name):
-		print("hit")
-
-
-func _on_LogCollision_area_entered(area):
-	if "Log" in area.name:
-		var Loggy = get_node("/root/Log")
-		speed = Loggy.speed
-
-
-func _on_LogCollision_area_exited(area):
-	speed = 0
