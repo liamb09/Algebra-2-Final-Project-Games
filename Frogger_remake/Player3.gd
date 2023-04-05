@@ -12,8 +12,8 @@ func _on_EnemyCollide_area_entered(area):
 		print("hit")
 
 func _process(delta):
-	var guy1 = get_node("/root/Player1")
-	if guy1.colide == false:
+	var guy2 = get_node("/root/Player2")
+	if guy2.colide == false:
 		set_process_unhandled_input(true)
 
 func _on_LogCollision_area_entered(area):
@@ -27,9 +27,10 @@ func _on_LogCollision_area_exited(area):
 
 func _on_EOLBCollide_area_entered(area):
 	if "EOLB_collide" in area.name:
-		var player2 = get_node("/root/Player2")
-		var guy1 = get_node("/root/Player1")
-		player2.colide = false
-		guy1.colide = true
+		var player3 = get_node("/root/Player3")
+		var guy2 = get_node("/root/Player2")
+		player3.colide = false
+		guy2.colide = true
 		set_process_unhandled_input(false)
 		set_process(false)
+

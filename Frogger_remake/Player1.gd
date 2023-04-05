@@ -26,3 +26,5 @@ func _on_EOLBCollide_area_entered(area):
 		var player1 = get_node("/root/Player1")
 		player1.colide = false
 		set_process_unhandled_input(false)
+		set_process(false)
+
