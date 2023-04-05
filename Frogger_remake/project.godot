@@ -33,6 +33,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Log="*res://Log.gd"
+Player1="*res://Player1.gd"
+Player2="*res://Player2.gd"
 
 [display]
 

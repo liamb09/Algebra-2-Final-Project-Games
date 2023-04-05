@@ -1,7 +1,6 @@
 extends player
 
 func _ready():
-	get_node("../Player1").connect("player1", self, "player1_done")
 	set_process_unhandled_input(false)
 
 func _on_EnemyCollide_area_entered(area):
@@ -10,6 +9,10 @@ func _on_EnemyCollide_area_entered(area):
 		or "Ambulance" in area.name):
 		print("hit")
 
+func _process(delta):
+	var guy1 = get_node("/root/Player1")
+	if guy1.colide == false:
+		set_process_unhandled_input(true)
 
 func _on_LogCollision_area_entered(area):
 	if "Log" in area.name:

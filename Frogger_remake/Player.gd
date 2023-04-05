@@ -3,7 +3,6 @@ extends Area2D
 class_name player
 
 const tile_size = 32
-onready var player = $PlayerSprite
 var speed = 0
 
 var inputs = {"right": Vector2.RIGHT,

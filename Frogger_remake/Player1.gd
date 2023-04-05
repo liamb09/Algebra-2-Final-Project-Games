@@ -1,5 +1,6 @@
 extends player
-signal player1
+
+var colide
 
 func _ready():
 	set_process_unhandled_input(true)
@@ -22,6 +23,6 @@ func _on_LogCollision_area_exited(area):
 
 func _on_EOLBCollide_area_entered(area):
 	if "EOLB_collide" in area.name:
-		emit_signal("player1")
-		print("collide")
+		var player1 = get_node("/root/Player1")
+		player1.colide = false
 		set_process_unhandled_input(false)
