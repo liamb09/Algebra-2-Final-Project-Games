@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Maps/midnight_zone.tres" type="TileSet" id=3]
+[ext_resource path="res://Maps/lava_zone.tres" type="TileSet" id=3]
 [ext_resource path="res://Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Teleports.tscn" type="PackedScene" id=6]
 [ext_resource path="res://PointDisplay.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Main.gd" type="Script" id=8]
+[ext_resource path="res://MidnightZone.tscn" type="PackedScene" id=9]
 [ext_resource path="res://novem___.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="DynamicFont" id=4]
@@ -48,9 +49,13 @@ goal_for = "Player 1"
 
 [node name="Teleports" parent="." instance=ExtResource( 6 )]
 
-[node name="TileMap" parent="." instance=ExtResource( 5 )]
+[node name="LavaZone" parent="." instance=ExtResource( 5 )]
+visible = false
 tile_set = ExtResource( 3 )
-tile_data = PoolIntArray( 0, 1073741825, 0, 29, 1073741825, 0, 131072, -536870898, 0, 131101, -536870898, 0, 327693, 1073741837, 0, 720909, 1073741837, 0 )
+tile_data = PoolIntArray( -1245184, -1073741811, 0, -1245155, -1073741811, 0, 0, -1073741812, 0, 11, -1610612735, 0, 18, -1610612735, 0, 21, -1073741812, 0, 458764, -1610612728, 0, 720907, 8, 0, 720914, 8, 0, 983048, 1610612738, 0, 983061, -1073741822, 0, 1048576, -1610612724, 0, 1048597, -1610612724, 0 )
+
+[node name="MidnightZone" parent="." instance=ExtResource( 9 )]
+tile_data = PoolIntArray( 0, 1, 0, 29, -1610612735, 0, 131072, -1610612723, 0, 131101, -1610612723, 0, 327693, 14, 0, 786445, 14, 0 )
 
 [node name="PointDisplay" parent="." instance=ExtResource( 7 )]
 position = Vector2( 32, 337 )

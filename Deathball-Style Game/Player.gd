@@ -10,6 +10,7 @@ var colliding_with
 const max_y_velocity = 1800
 var inertia = 300
 var touching_wall_side # which side of the player is touching the wall
+var current_map
 export var start_pos = Vector2.ZERO
 export var control_mode = ""
 
@@ -17,6 +18,7 @@ export var control_mode = ""
 func _ready():
 	screen_size = get_viewport_rect().size
 	reset()
+	current_map = get_parent().current_map
 	
 func reset():
 	position = start_pos
@@ -38,10 +40,10 @@ func _physics_process(delta):
 		if collision.collider.is_in_group("bodies") and not $DownRayCast.is_colliding():
 			collision.collider.apply_central_impulse(-collision.normal * inertia)
 		colliding_with.append(collision.collider.name)
-	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4 - 0.04, false) 
+	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4 - 0.04, false)
 	if is_on_floor():
 		velocity.y = 0
-	if colliding_with.find("TileMap") == -1 or is_on_ceiling():
+	if colliding_with.find(current_map) == -1 or is_on_ceiling():
 		velocity.y += gravity
 	if is_on_wall():
 		if $LeftRayCast.is_colliding():

@@ -2,9 +2,19 @@ extends Node
 
 export var player1points = 2
 export var player2points = 2
+var current_map = "LavaZone"
 
 func _ready():
-	pass
+	$LavaZone.hide()
+	$LavaZone.set_collision_mask_bit(0, false)
+	$MidnightZone.hide()
+	$MidnightZone.set_collision_mask_bit(0, false)
+	if current_map == "LavaZone":
+		$LavaZone.show()
+		$LavaZone.collision_layer = 1
+	else:
+		$MidnightZone.show()
+		$MidnightZone.collision_layer = 1
 
 func _process(delta):
 	if player1points > 0 and player2points > 0:
