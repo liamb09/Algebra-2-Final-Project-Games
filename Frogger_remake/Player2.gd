@@ -26,10 +26,11 @@ func _on_LogCollision_area_exited(area):
 	speed = 0
 
 func _on_EOLBCollide_area_entered(area):
-	if "EOLB_collide" in area.name:
+	if "EOLB_collide" in area.name and EOLB.status[1] == true:
 		var player2 = get_node("/root/Player2")
 		var guy1 = get_node("/root/Player1")
 		player2.colide = false
 		guy1.colide = true
+		EOLB.status[2] = false
 		set_process_unhandled_input(false)
 		set_process(false)

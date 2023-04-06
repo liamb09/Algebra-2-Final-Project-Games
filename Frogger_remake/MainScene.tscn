@@ -87,30 +87,30 @@ func _process(delta):
 [node name="MainScene" type="Node2D"]
 script = SubResource( 1 )
 
+[node name="Player1" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( -296, 896 )
+
+[node name="Player2" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="Player3" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( -344, 144 )
+
+[node name="Player4" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( -376, 312 )
+
+[node name="Player5" parent="." instance=ExtResource( 10 )]
+visible = false
+position = Vector2( -344, 224 )
+
 [node name="EOLB" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( -120, 120 )
 
 [node name="Players" type="Node" parent="."]
-
-[node name="Player1" parent="Players" instance=ExtResource( 1 )]
-visible = false
-position = Vector2( -296, 896 )
-
-[node name="Player2" parent="Players" instance=ExtResource( 7 )]
-visible = false
-
-[node name="Player3" parent="Players" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( -344, 144 )
-
-[node name="Player4" parent="Players" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( -376, 312 )
-
-[node name="Player5" parent="Players" instance=ExtResource( 10 )]
-visible = false
-position = Vector2( -344, 224 )
 
 [node name="Enemies" type="Node" parent="."]
 

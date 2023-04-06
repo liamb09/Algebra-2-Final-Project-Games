@@ -22,5 +22,3 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EOLB_collide"]
 shape = SubResource( 2 )
-
-[connection signal="area_entered" from="EOLB_collide" to="." method="_on_EOLB_collide_area_entered"]

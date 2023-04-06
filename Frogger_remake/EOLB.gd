@@ -1,7 +1,6 @@
 extends StaticBody2D
 
-var status = true
+var status = [true, true, true, true, true]
 
-func _on_EOLB_collide_area_entered(area):
-	if "EOLBCollide" in area.name:
-		status = false
+var temptimer = 0
+

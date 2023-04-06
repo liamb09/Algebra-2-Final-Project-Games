@@ -4,6 +4,7 @@ class_name player
 
 const tile_size = 32
 var speed = 0
+onready var EOLB = get_node("/root/Eolb")
 
 var inputs = {"right": Vector2.RIGHT,
 			  "left": Vector2.LEFT,
