@@ -39,6 +39,7 @@ Player4="*res://Player4.gd"
 Player3="*res://Player3.gd"
 Player5="*res://Player5.gd"
 Eolb="*res://EOLB.gd"
+Eolb2="*res://EOLB2.gd"
 
 [display]
 

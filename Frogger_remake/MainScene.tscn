@@ -24,6 +24,7 @@ var Log = load(\"res://Log.tscn\")
 var Firetruck = load(\"res://Firetruck.tscn\")
 var Police = load(\"res://Police.tscn\")
 var end_of_level = load(\"res://EOLB.tscn\")
+var end_of_level2 = load(\"res://EOLB2.tscn\")
 var timer2 = 0
 var timer1 = 0
 var timer3 = 0
@@ -72,6 +73,7 @@ func _ready():
 	spawn_entity(600, 400, player4)
 	spawn_entity(750, 400, player5)
 	spawn_entity(150, 100, end_of_level)
+	spawn_entity(300, 100, end_of_level2)
 	init_at_intervals(ambulance, 16, 288, 300)
 	init_at_intervals(Log, 16, 200, 200)
 	init_at_intervals(Firetruck, 16, 256, 300)
