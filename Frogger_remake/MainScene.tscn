@@ -25,6 +25,9 @@ var Firetruck = load(\"res://Firetruck.tscn\")
 var Police = load(\"res://Police.tscn\")
 var end_of_level = load(\"res://EOLB.tscn\")
 var end_of_level2 = load(\"res://EOLB2.tscn\")
+var end_of_level3 = load(\"res://EOLB3.tscn\")
+var end_of_level4 = load(\"res://EOLB4.tscn\")
+var end_of_level5 = load(\"res://EOLB5.tscn\")
 var timer2 = 0
 var timer1 = 0
 var timer3 = 0
@@ -74,6 +77,9 @@ func _ready():
 	spawn_entity(750, 400, player5)
 	spawn_entity(150, 100, end_of_level)
 	spawn_entity(300, 100, end_of_level2)
+	spawn_entity(450, 100, end_of_level3)
+	spawn_entity(600, 100, end_of_level4)
+	spawn_entity(750, 100, end_of_level5)
 	init_at_intervals(ambulance, 16, 288, 300)
 	init_at_intervals(Log, 16, 200, 200)
 	init_at_intervals(Firetruck, 16, 256, 300)
@@ -88,6 +94,10 @@ func _process(delta):
 
 [node name="MainScene" type="Node2D"]
 script = SubResource( 1 )
+
+[node name="EOLB" parent="." instance=ExtResource( 6 )]
+visible = false
+position = Vector2( -120, 120 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -108,12 +118,6 @@ position = Vector2( -376, 312 )
 visible = false
 position = Vector2( -344, 224 )
 
-[node name="EOLB" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( -120, 120 )
-
-[node name="Players" type="Node" parent="."]
-
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Log" parent="Enemies" instance=ExtResource( 3 )]
@@ -131,3 +135,5 @@ position = Vector2( -456, 352 )
 [node name="Ambulance" parent="Enemies" instance=ExtResource( 2 )]
 visible = false
 position = Vector2( -264, 520 )
+
+[node name="Players" type="Node" parent="."]
