@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ambulance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Log.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Police.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Firetruck.tscn" type="PackedScene" id=5]
-[ext_resource path="res://EOLB.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player4.tscn" type="PackedScene" id=9]
@@ -23,7 +22,7 @@ var player5 = load(\"res://Player5.tscn\")
 var Log = load(\"res://Log.tscn\")
 var Firetruck = load(\"res://Firetruck.tscn\")
 var Police = load(\"res://Police.tscn\")
-var end_of_level = load(\"res://EOLB.tscn\")
+var end_of_level = load(\"res://EOLB1.tscn\")
 var end_of_level2 = load(\"res://EOLB2.tscn\")
 var end_of_level3 = load(\"res://EOLB3.tscn\")
 var end_of_level4 = load(\"res://EOLB4.tscn\")
@@ -94,10 +93,6 @@ func _process(delta):
 
 [node name="MainScene" type="Node2D"]
 script = SubResource( 1 )
-
-[node name="EOLB" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( -120, 120 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 visible = false

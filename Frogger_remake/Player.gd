@@ -38,7 +38,6 @@ func move(dir):
 	position += inputs[dir] * tile_size
 
 func EOLB_hit(Player, the_EOLB, start):
-	print(the_EOLB)
 	Player.colide = false
 	for i in range(start, 5):
 		the_EOLB.status[i] = false
