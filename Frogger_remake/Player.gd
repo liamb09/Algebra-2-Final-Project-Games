@@ -4,11 +4,11 @@ class_name player
 
 const tile_size = 32
 var speed = 0
-onready var EOLB = get_node("/root/Eolb")
+onready var EOLB1 = get_node("/root/Eolb1")
 onready var EOLB2 = get_node("/root/Eolb2")
 onready var EOLB3 = get_node("/root/Eolb3")
 onready var EOLB4 = get_node("/root/Eolb4")
-onready var EOLB5 = get_node("/root/Eolb")
+onready var EOLB5 = get_node("/root/Eolb5")
 onready var player1 = get_node("/root/Player1")
 onready var player2 = get_node("/root/Player2")
 onready var player3 = get_node("/root/Player3")
@@ -37,10 +37,10 @@ func _process(delta):
 func move(dir):
 	position += inputs[dir] * tile_size
 
-func EOLB_hit(path, the_EOLB):
-	var Player = get_node(path)
+func EOLB_hit(Player, the_EOLB, start):
+	print(the_EOLB)
 	Player.colide = false
-	for i in range(1,5):
+	for i in range(start, 5):
 		the_EOLB.status[i] = false
 	set_process_unhandled_input(false)
 	set_process(false)

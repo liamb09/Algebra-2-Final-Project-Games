@@ -26,13 +26,13 @@ func _on_LogCollision_area_exited(area):
 	speed = 0
 
 func _on_EOLBCollide_area_entered(area):
-	if "EOLB_collide" in area.name and EOLB.status[1] == true:
-		EOLB_hit(player2, EOLB)
+	if "EOLB_collide" in area.name and EOLB1.status[1] == true:
+		EOLB_hit(player2, EOLB1, 2)
 	elif "EOLB_collide2" in area.name and EOLB2.status[1] == true:
-		EOLB_hit(player2, EOLB2)
+		EOLB_hit(player2, EOLB2, 2)
 	elif "EOLB_collide3" in area.name and EOLB3.status[1] == true:
-		EOLB_hit(player2, EOLB3)
+		EOLB_hit(player2, EOLB3, 2)
 	elif "EOLB_collide4" in area.name and EOLB4.status[1] == true:
-		EOLB_hit(player2, EOLB4)
+		EOLB_hit(player2, EOLB4, 2)
 	elif "EOLB_collide5" in area.name and EOLB5.status[1] == true:
-		EOLB_hit(player2, EOLB5)
+		EOLB_hit(player2, EOLB5, 2)
