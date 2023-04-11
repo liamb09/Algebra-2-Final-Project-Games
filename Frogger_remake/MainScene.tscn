@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ambulance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Log.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Police.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Firetruck.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Sprites/Water-1.png (1).png" type="Texture" id=6]
+[ext_resource path="res://Water.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Player4.tscn" type="PackedScene" id=9]
@@ -28,6 +28,7 @@ var end_of_level2 = load(\"res://EOLB2.tscn\")
 var end_of_level3 = load(\"res://EOLB3.tscn\")
 var end_of_level4 = load(\"res://EOLB4.tscn\")
 var end_of_level5 = load(\"res://EOLB5.tscn\")
+var Water = load(\"res://Water.tscn\")
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -35,6 +36,14 @@ func spawn_entity(pos_x, pos_y, sprite):
 	spriteInstance.position.y = pos_y
 	add_child(spriteInstance)
 
+func water_spawn(pos_y, sprite):
+	var pos_x = 16
+	while pos_x < get_viewport().size.x:
+		var spriteInstance = sprite.instance()
+		spriteInstance.position.x = pos_x
+		spriteInstance.position.y = pos_y
+		add_child(spriteInstance)
+		pos_x += 32
 
 func spawn_at_intervals(sprite_path, pos_y, interval_time, timer):
 	var screen_size_x = get_viewport().size.x
@@ -71,8 +80,9 @@ func _ready():
 	spawn_entity(450, 100, end_of_level3)
 	spawn_entity(600, 100, end_of_level4)
 	spawn_entity(750, 100, end_of_level5)
+	water_spawn(208, Water)
 	init_at_intervals(ambulance, 16, 288, 300)
-	init_at_intervals(Log, 16, 208, 200)
+	#init_at_intervals(Log, 16, 208, 200)
 	init_at_intervals(Firetruck, 16, 256, 300)
 	init_at_intervals(Police, 16, 320, 200)
 	spawn_entity(150, 400, player)
@@ -82,43 +92,8 @@ func _ready():
 	spawn_entity(750, 400, player5)
 "
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 448, 7 )
-
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
-
-[sub_resource type="TileSet" id=3]
-0/name = "Water-1.png (1).png 0"
-0/texture = ExtResource( 6 )
-0/tex_offset = Vector2( 0, 0 )
-0/modulate = Color( 1, 1, 1, 1 )
-0/region = Rect2( 0, 0, 32, 32 )
-0/tile_mode = 0
-0/occluder_offset = Vector2( 0, 0 )
-0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 2 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
-0/shapes = [ {
-"autotile_coord": Vector2( 0, 0 ),
-"one_way": false,
-"one_way_margin": 1.0,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
-} ]
-0/z_index = 0
-
 [node name="MainScene" type="Node2D"]
 script = SubResource( 1 )
-
-[node name="Water1" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Water1"]
-position = Vector2( 448, 206 )
-shape = SubResource( 4 )
 
 [node name="Player1" parent="." instance=ExtResource( 1 )]
 visible = false
@@ -159,8 +134,5 @@ position = Vector2( -264, 520 )
 
 [node name="Players" type="Node" parent="."]
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource( 3 )
-cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PoolIntArray( 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0 )
+[node name="Water" parent="." instance=ExtResource( 6 )]
+position = Vector2( -595, 252 )
