@@ -35,5 +35,5 @@ func _on_EOLBCollide_area_entered(area):
 
 
 func _on_WaterCollide_area_entered(area):
-	if "Water1" in area.name:
+	if "WaterCollision" in area.name:
 		print("Watercollided and die")

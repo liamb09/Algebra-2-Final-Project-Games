@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Log (1).png" type="Texture" id=1]
 [ext_resource path="res://Log.gd" type="Script" id=2]
@@ -8,6 +8,9 @@ extents = Vector2( 16, 5 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16, 5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 30, 9.5 )
 
 [node name="Log" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -26,5 +29,15 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Log_collide"]
 shape = SubResource( 2 )
+
+[node name="WaterCollision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WaterCollision"]
+position = Vector2( 63, -0.5 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WaterCollision"]
+position = Vector2( -62, 0 )
+shape = SubResource( 3 )
 
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
