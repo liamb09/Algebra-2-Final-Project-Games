@@ -13,6 +13,7 @@ var touching_wall_side # which side of the player is touching the wall
 var current_map
 export var start_pos = Vector2.ZERO
 export var control_mode = ""
+var direction = 1 #1 means right, -1 means left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,9 +55,14 @@ func _physics_process(delta):
 		touching_wall_side = ""
 	if Input.is_action_pressed(control_mode+"ui_right") and touching_wall_side != "right":
 		velocity.x = max(velocity.x+acc, speed)
+		direction = 1
 	elif Input.is_action_pressed(control_mode+"ui_left") and touching_wall_side != "left":
 		velocity.x = min(velocity.x-acc, -speed)
+		direction = -1
 	else:
 		velocity.x *= .8
+		direction = 0
+	if Input.is_action_just_pressed(control_mode+"run"):
+		velocity.x = 1000*direction
 	if Input.is_action_just_pressed(control_mode+"ui_up"):
 		velocity.y = -500

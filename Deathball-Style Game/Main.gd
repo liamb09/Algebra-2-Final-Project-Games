@@ -2,7 +2,7 @@ extends Node
 
 export var player1points = 5
 export var player2points = 5
-var current_map = "MidnightZone"
+var current_map = "LavaZone"
 
 func _ready():
 	$MidnightZone.collision_layer = 0
@@ -53,6 +53,7 @@ func _ready():
 		set_pos_and_scale($P2Goal1, Vector2(4000, 576), Vector2(8, 3))
 		set_pos_and_scale($P2Goal2, Vector2(1900, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(550, 672), Vector2(1370, 672), Vector2(960, 200))
+	$Ball.reset()
 
 func _process(delta):
 	if player1points > 0 and player2points > 0:
@@ -77,7 +78,7 @@ func set_pos_and_scale(goal, pos, scale):
 func set_player_and_ball(player2_pos, player1_pos, ball_pos):
 	$Player2.position = player2_pos
 	$Player.position = player1_pos
-	$Ball.position = ball_pos
+	$Ball.start_pos = ball_pos
 
 func _on_Goal_body_entered(body):
 	if body.get_name() == "Ball":
