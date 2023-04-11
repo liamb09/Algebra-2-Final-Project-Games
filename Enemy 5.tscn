@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemy 5.gd" type="Script" id=1]
+[ext_resource path="res://Assets/PNG/Enemies/enemyGreen5.png" type="Texture" id=2]
+
+[node name="Enemy 5" type="Area2D" groups=["enemies"]]
+rotation = 3.14159
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -34, -29, -20, 22, -12, 22, -13, 24, -10, 29, 9, 30, 11, 26, 12, 22, 20, 22, 34, -29, 22, -29, 9, -22, 8, -18, 0, -20, -9, -18, -9, -21, -23, -29 )
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 0, 25 )
+
+[node name="laserTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_Enemy_5_area_entered"]
+[connection signal="timeout" from="laserTimer" to="." method="_on_laserTimer_timeout"]
