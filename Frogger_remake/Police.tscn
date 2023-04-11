@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Police.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Police.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -23,9 +23,15 @@ texture = ExtResource( 2 )
 position = Vector2( -320, -276.25 )
 shape = SubResource( 1 )
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -767.5, -277.5 )
+scale = Vector2( 12.75, 25.75 )
+
 [node name="Police_Collide" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Police_Collide"]
-position = Vector2( -280, -300 )
+position = Vector2( -300, -320 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 2 )
+
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

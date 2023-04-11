@@ -24,10 +24,13 @@ var inputs = {"right": Vector2.RIGHT,
 func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
+
+
 func _unhandled_input(event):
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
 			move(dir)
+			
 
 func _process(delta):
 	position.x = clamp(position.x, 0+16, get_viewport().size.x-16)
@@ -43,3 +46,5 @@ func EOLB_hit(Player, the_EOLB, start):
 		the_EOLB.status[i] = false
 	set_process_unhandled_input(false)
 	set_process(false)
+
+

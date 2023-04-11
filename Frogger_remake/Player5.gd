@@ -27,3 +27,8 @@ func _on_LogCollision_area_exited(area):
 
 func _on_EOLBCollide_area_entered(area):
 	pass
+
+
+func _on_WaterCollide_area_entered(area):
+	if "Water1" in area.name:
+		print("Watercollided and die")

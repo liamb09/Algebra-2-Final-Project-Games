@@ -1,30 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Ambulance.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Ambulance.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 420, 130 )
+extents = Vector2( 28.5, 12.5 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 340, 130 )
-
-[node name="Ambulance" type="KinematicBody2D"]
-scale = Vector2( 0.05, 0.05 )
+[node name="Ambluance" type="KinematicBody2D"]
 script = ExtResource( 1 )
-speed = -70
-sprite_path = "AmbulanceSprite"
+speed = -50
+sprite_path = "EnemySprite"
 
-[node name="AmbulanceSprite" type="Sprite" parent="."]
-position = Vector2( -43, 32 )
+[node name="EnemySprite" type="Sprite" parent="."]
+scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -160, -30 )
+position = Vector2( -5.5, -3.5 )
 shape = SubResource( 1 )
 
-[node name="Ambulance_Collide" type="Area2D" parent="."]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 19.5, -3 )
+scale = Vector2( 0.35, 1.2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ambulance_Collide"]
-position = Vector2( -100, -30 )
-shape = SubResource( 2 )
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

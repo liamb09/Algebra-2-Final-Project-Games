@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/FireTruck.png" type="Texture" id=1]
-[ext_resource path="res://Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Firetruck.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17, 7.5 )
@@ -22,8 +22,15 @@ texture = ExtResource( 1 )
 position = Vector2( 6, 8.5 )
 shape = SubResource( 1 )
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -27, 10.5 )
+scale = Vector2( 0.8, 1.25 )
+
 [node name="Firetruck_collide" type="Area2D" parent="."]
+position = Vector2( -8, 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Firetruck_collide"]
-position = Vector2( -1, 9 )
+position = Vector2( 9, 3 )
 shape = SubResource( 2 )
+
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

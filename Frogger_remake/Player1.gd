@@ -32,3 +32,8 @@ func _on_EOLBCollide_area_entered(area):
 		EOLB_hit(player1, EOLB4, 1)
 	elif "EOLB_collide5" in area.name and EOLB5.status[0] == true:
 		EOLB_hit(player1, EOLB5, 1)
+
+
+func _on_WaterCollide_area_entered(area):
+	if "Water1" in area.name:
+		print("Watercollided and die")
