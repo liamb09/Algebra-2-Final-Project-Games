@@ -43,7 +43,7 @@ func _physics_process(delta):
 	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4 - 0.04, false)
 	if is_on_floor():
 		velocity.y = 0
-	if colliding_with.find(current_map) == -1 or is_on_ceiling():
+	if colliding_with.find(current_map) == -1 or is_on_ceiling() or is_on_wall():
 		velocity.y += gravity
 	if is_on_wall():
 		if $LeftRayCast.is_colliding():

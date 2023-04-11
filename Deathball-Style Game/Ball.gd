@@ -6,10 +6,6 @@ var spawn_pos = Vector2(960, 400)
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	reset()
-
-func reset():
-	position = spawn_pos
 
 func _integrate_forces(state):
 	$Up.global_rotation_degrees = 0
