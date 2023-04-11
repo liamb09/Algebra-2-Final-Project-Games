@@ -15,6 +15,7 @@ var end_of_level3 = load("res://EOLB3.tscn")
 var end_of_level4 = load("res://EOLB4.tscn")
 var end_of_level5 = load("res://EOLB5.tscn")
 var timer = 0
+var coin = load("res://Coin.tscn")
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -22,15 +23,18 @@ func spawn_entity(pos_x, pos_y, sprite):
 	spriteInstance.position.y = pos_y
 	add_child(spriteInstance)
 
-func water_spawn(pos_y, sprite):
+func coin_spawn():
 	var pos_x = 16
-	while pos_x < get_viewport().size.x:
-		var spriteInstance = sprite.instance()
-		spriteInstance.position.x = pos_x
-		spriteInstance.position.y = pos_y
-		add_child(spriteInstance)
-		pos_x += 32
-
+	var pos_y = 16
+	var counter = 0
+	while counter < 6:
+		pos_y = 1+randi()%13 * 64
+		pos_x = 1+randi() % 13 * 64
+		var coin_instance = coin.instance()
+		coin_instance.position = Vector2(pos_x, pos_y)
+		add_child(coin_instance)
+		counter+=1
+	
 func spawn_at_intervals(sprite_path, pos_y, interval_time, timer):
 	var screen_size_x = get_viewport().size.x
 	timer += 1
@@ -63,7 +67,6 @@ func init_at_intervals(sprite, pos_x, pos_y, interval_time):
 func _process(delta):
 	timer += delta
 	timer = stepify(timer, 0.01)
-	print(timer)
 	$Label.text = str(timer)
 
 func _ready():
@@ -76,6 +79,7 @@ func _ready():
 	init_at_intervals(Log, 16, 208, 200)
 	init_at_intervals(Firetruck, 16, 256, 300)
 	init_at_intervals(Police, 16, 320, 200)
+	coin_spawn()
 	spawn_entity(150, 400, player)
 	spawn_entity(300, 400, player2)
 	spawn_entity(450, 400, player3)
