@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ambulance.tscn" type="PackedScene" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://MainScene.gd" type="Script" id=11]
 [ext_resource path="res://ka1.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sprites/Road1.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Road0.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Road2.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
@@ -33,6 +36,48 @@ font_data = ExtResource( 12 )
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
+1/name = "Road0.png 1"
+1/texture = ExtResource( 15 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Road2.png 2"
+2/texture = ExtResource( 16 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 64 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Road1.png 3"
+3/texture = ExtResource( 14 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 64 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 11 )
@@ -91,7 +136,7 @@ position = Vector2( -264, 520 )
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0 )
+tile_data = PoolIntArray( 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 327700, 0, 0, 327701, 0, 0, 327702, 0, 0, 327703, 0, 0, 327704, 0, 0, 327705, 0, 0, 327706, 0, 0, 327707, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 393236, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 393240, 0, 0, 393241, 0, 0, 393242, 0, 0, 393243, 0, 0, 589824, 2, 0, 589826, 2, 0, 589828, 2, 0, 589830, 2, 0, 589832, 2, 0, 589834, 2, 0, 589836, 2, 0, 589838, 2, 0, 589840, 2, 0, 589842, 2, 0, 589844, 2, 0, 589846, 2, 0, 589848, 2, 0, 589850, 2, 0, 720896, 3, 0, 720898, 3, 0, 720900, 3, 0, 720902, 3, 0, 720904, 3, 0, 720906, 3, 0, 720908, 3, 0, 720910, 3, 0, 720912, 3, 0, 720914, 3, 0, 720916, 3, 0, 720918, 3, 0, 720920, 3, 0, 720922, 3, 0, 851968, 1, 0, 851970, 1, 0, 851972, 1, 0, 851974, 1, 0, 851976, 1, 0, 851978, 1, 0, 851980, 1, 0, 851982, 1, 0, 851984, 1, 0, 851986, 1, 0, 851988, 1, 0, 851990, 1, 0, 851992, 1, 0, 851994, 1, 0 )
 
 [node name="Coin" parent="." instance=ExtResource( 13 )]
-position = Vector2( 250, 316 )
+position = Vector2( -112, 200 )

@@ -10,7 +10,7 @@ extents = Vector2( 16, 5 )
 extents = Vector2( 16, 5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 30, 9.5 )
+extents = Vector2( 26.5, 9.5 )
 
 [node name="Log" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -33,11 +33,11 @@ shape = SubResource( 2 )
 [node name="WaterCollision" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="WaterCollision"]
-position = Vector2( 63, -0.5 )
+position = Vector2( 66.5, -0.5 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WaterCollision"]
-position = Vector2( -62, 0 )
+position = Vector2( -69, 0 )
 shape = SubResource( 3 )
 
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

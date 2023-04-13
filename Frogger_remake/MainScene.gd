@@ -16,6 +16,7 @@ var end_of_level4 = load("res://EOLB4.tscn")
 var end_of_level5 = load("res://EOLB5.tscn")
 var timer = 0
 var coin = load("res://Coin.tscn")
+var counter = 1
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -24,13 +25,14 @@ func spawn_entity(pos_x, pos_y, sprite):
 	add_child(spriteInstance)
 
 func coin_spawn():
-	var pos_x = 16
-	var pos_y = 16
-	var counter = 0
-	while counter < 6:
-		pos_y = 1+randi()%13 * 64
-		pos_x = 1+randi() % 13 * 64
+	var rand1 = RandomNumberGenerator.new()
+	var rand2 = RandomNumberGenerator.new()
+	while counter < 4:
 		var coin_instance = coin.instance()
+		rand1.randomize()
+		rand2.randomize()
+		var pos_x = rand1.randi_range(64, 708)
+		var pos_y = rand2.randi_range(128, 708)
 		coin_instance.position = Vector2(pos_x, pos_y)
 		add_child(coin_instance)
 		counter+=1
@@ -75,13 +77,13 @@ func _ready():
 	spawn_entity(450, 100, end_of_level3)
 	spawn_entity(600, 100, end_of_level4)
 	spawn_entity(750, 100, end_of_level5)
-	init_at_intervals(ambulance, 16, 288, 300)
+	init_at_intervals(ambulance, 16, 320, 300)
 	init_at_intervals(Log, 16, 208, 200)
-	init_at_intervals(Firetruck, 16, 256, 300)
-	init_at_intervals(Police, 16, 320, 200)
+	init_at_intervals(Firetruck, 16, 448, 300)
+	init_at_intervals(Police, 16, 288, 200)
 	coin_spawn()
-	spawn_entity(150, 400, player)
-	spawn_entity(300, 400, player2)
-	spawn_entity(450, 400, player3)
-	spawn_entity(600, 400, player4)
-	spawn_entity(750, 400, player5)
+	spawn_entity(150, 800, player)
+	spawn_entity(300, 800, player2)
+	spawn_entity(450, 800, player3)
+	spawn_entity(600, 800, player4)
+	spawn_entity(750, 800, player5)
