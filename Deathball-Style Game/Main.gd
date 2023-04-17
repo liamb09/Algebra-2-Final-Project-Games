@@ -2,7 +2,8 @@ extends Node
 
 export var player1points = 5
 export var player2points = 5
-var current_map = "LavaZone"
+#THIS ISN'T RANDOMIZED FOR SOME REASON
+var current_map = ["LavaZone", "MidnightZone", "UnderwaterDeadzone", "Coral"][randi()%4]
 
 func _ready():
 	$MidnightZone.collision_layer = 0
@@ -17,6 +18,7 @@ func _ready():
 	$MidnightZone.hide()
 	$UnderwaterDeadzone.hide()
 	$CoralReef.hide()
+	$WinMessage.bbcode_text = ""
 	if current_map == "LavaZone":
 		$LavaZone.show()
 		$LavaZone.collision_layer = 1
@@ -26,15 +28,23 @@ func _ready():
 		set_pos_and_scale($P2Goal1, Vector2(1280, 1043), Vector2(16, 0.75))
 		set_pos_and_scale($P2Goal2, Vector2(1280, 4), Vector2(16, 0.75))
 		set_player_and_ball(Vector2(300, 992), Vector2(1620, 992), Vector2(960, 320))
+		$PointDisplay.position = Vector2(1888, 337)
+		$PointDisplay.rotation_degrees = 0
+		$PointDisplay2.position = Vector2(32, 337)
+		$PointDisplay2.rotation_degrees = 0
 	elif current_map == "MidnightZone":
 		$MidnightZone.show()
 		$MidnightZone.collision_layer = 1
 		$MidnightZone.collision_mask = 1
-		set_pos_and_scale($P1Goal1, Vector2(928, 576), Vector2(8, 3))
-		set_pos_and_scale($P1Goal2, Vector2(20, 96), Vector2(8, 0.5))
-		set_pos_and_scale($P2Goal1, Vector2(992, 576), Vector2(8, 3))
-		set_pos_and_scale($P2Goal2, Vector2(1900, 96), Vector2(8, 0.5))
+		set_pos_and_scale($P1Goal2, Vector2(928, 576), Vector2(8, 3))
+		set_pos_and_scale($P1Goal1, Vector2(20, 96), Vector2(8, 0.5))
+		set_pos_and_scale($P2Goal2, Vector2(992, 576), Vector2(8, 3))
+		set_pos_and_scale($P2Goal1, Vector2(1900, 96), Vector2(8, 0.5))
 		set_player_and_ball(Vector2(300, 540), Vector2(1620, 540), Vector2(960, 200))
+		$PointDisplay.position = Vector2(1888, 337)
+		$PointDisplay.rotation_degrees = 0
+		$PointDisplay2.position = Vector2(32, 337)
+		$PointDisplay2.rotation_degrees = 0
 	elif current_map == "UnderwaterDeadzone":
 		$UnderwaterDeadzone.show()
 		$UnderwaterDeadzone.collision_layer = 1
@@ -44,6 +54,10 @@ func _ready():
 		set_pos_and_scale($P2Goal1, Vector2(4000, 576), Vector2(8, 3))
 		set_pos_and_scale($P2Goal2, Vector2(1900, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(200, 540), Vector2(1720, 540), Vector2(960, 200))
+		$PointDisplay.position = Vector2(1760, 33)
+		$PointDisplay.rotation_degrees = -90
+		$PointDisplay2.position = Vector2(160, 33)
+		$PointDisplay2.rotation_degrees = 90
 	elif current_map == "CoralReef":
 		$CoralReef.show()
 		$CoralReef.collision_layer = 1
@@ -53,6 +67,10 @@ func _ready():
 		set_pos_and_scale($P2Goal1, Vector2(4000, 576), Vector2(8, 3))
 		set_pos_and_scale($P2Goal2, Vector2(1900, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(550, 672), Vector2(1370, 672), Vector2(960, 200))
+		$PointDisplay.position = Vector2(1488, 33)
+		$PointDisplay.rotation_degrees = -90
+		$PointDisplay2.position = Vector2(432, 33)
+		$PointDisplay2.rotation_degrees = 90
 	$Ball.reset()
 
 func _process(delta):
@@ -65,11 +83,9 @@ func _process(delta):
 		$PointDisplay.hide()
 		$PointDisplay2.hide()
 		if player1points == 0:
-			print("Player 2 Wins!")
-			$WinMessage.text = "Player 2 Wins!"
+			$WinMessage.bbcode_text = "    Player 2 Wins!\nPlayer 1 got DOMINATED!!"
 		else:
-			print("Player 1 Wins!")
-			$WinMessage.text = "Player 1 Wins!"\
+			$WinMessage.bbcode_text = "    Player 1 Wins!\nPlayer 2 got DOMINATED!!"
 
 func set_pos_and_scale(goal, pos, scale):
 	goal.position = pos

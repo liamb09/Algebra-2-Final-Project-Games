@@ -20,6 +20,10 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	reset()
 	current_map = get_parent().current_map
+	if control_mode == "wasd_":
+		$AnimatedSprite.frame = 0
+	else:
+		$AnimatedSprite.frame = 1
 	
 func reset():
 	position = start_pos

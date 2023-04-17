@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 var screen_size
-var prev_linear_velocity
 var start_pos
+const max_dy = 2000
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -21,6 +21,7 @@ func _integrate_forces(state):
 		gravity_scale = 0
 	else:
 		gravity_scale = 10
+	linear_velocity.y = clamp(linear_velocity.y, 0, max_dy)
 
 func _on_Teleports_teleport(direction):
 	if direction == "left":
