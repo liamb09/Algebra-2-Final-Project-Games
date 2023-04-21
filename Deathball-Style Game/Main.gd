@@ -1,9 +1,8 @@
 extends Node
 
-export var player1points = 5
-export var player2points = 5
-#THIS ISN'T RANDOMIZED FOR SOME REASON
-var current_map = ["LavaZone", "MidnightZone", "UnderwaterDeadzone", "Coral"][randi()%4]
+export var player1points = 3
+export var player2points = 3
+var current_map = get_tree().get_root().get_node("res://LevelSelection").get("selected_level")
 
 func _ready():
 	$MidnightZone.collision_layer = 0
@@ -23,10 +22,10 @@ func _ready():
 		$LavaZone.show()
 		$LavaZone.collision_layer = 1
 		$LavaZone.collision_mask = 1
-		set_pos_and_scale($P1Goal1, Vector2(640, 1043), Vector2(16, 0.75))
-		set_pos_and_scale($P1Goal2, Vector2(640, 4), Vector2(16, 0.75))
-		set_pos_and_scale($P2Goal1, Vector2(1280, 1043), Vector2(16, 0.75))
-		set_pos_and_scale($P2Goal2, Vector2(1280, 4), Vector2(16, 0.75))
+		set_pos_and_scale($P2Goal1, Vector2(640, 1043), Vector2(16, 0.75))
+		set_pos_and_scale($P2Goal2, Vector2(640, 4), Vector2(16, 0.75))
+		set_pos_and_scale($P1Goal1, Vector2(1280, 1043), Vector2(16, 0.75))
+		set_pos_and_scale($P1Goal2, Vector2(1280, 4), Vector2(16, 0.75))
 		set_player_and_ball(Vector2(300, 992), Vector2(1620, 992), Vector2(960, 320))
 		$PointDisplay.position = Vector2(1888, 337)
 		$PointDisplay.rotation_degrees = 0
@@ -36,10 +35,10 @@ func _ready():
 		$MidnightZone.show()
 		$MidnightZone.collision_layer = 1
 		$MidnightZone.collision_mask = 1
-		set_pos_and_scale($P1Goal2, Vector2(928, 576), Vector2(8, 3))
-		set_pos_and_scale($P1Goal1, Vector2(20, 96), Vector2(8, 0.5))
-		set_pos_and_scale($P2Goal2, Vector2(992, 576), Vector2(8, 3))
-		set_pos_and_scale($P2Goal1, Vector2(1900, 96), Vector2(8, 0.5))
+		set_pos_and_scale($P2Goal1, Vector2(928, 576), Vector2(8, 3))
+		set_pos_and_scale($P2Goal2, Vector2(20, 96), Vector2(8, 0.5))
+		set_pos_and_scale($P1Goal1, Vector2(992, 576), Vector2(8, 3))
+		set_pos_and_scale($P1Goal2, Vector2(1900, 96), Vector2(8, 0.5))
 		set_player_and_ball(Vector2(300, 540), Vector2(1620, 540), Vector2(960, 200))
 		$PointDisplay.position = Vector2(1888, 337)
 		$PointDisplay.rotation_degrees = 0
@@ -49,10 +48,10 @@ func _ready():
 		$UnderwaterDeadzone.show()
 		$UnderwaterDeadzone.collision_layer = 1
 		$UnderwaterDeadzone.collision_mask = 1
-		set_pos_and_scale($P1Goal1, Vector2(4000, 576), Vector2(8, 3))
-		set_pos_and_scale($P1Goal2, Vector2(20, 540), Vector2(8, 10))
 		set_pos_and_scale($P2Goal1, Vector2(4000, 576), Vector2(8, 3))
-		set_pos_and_scale($P2Goal2, Vector2(1900, 540), Vector2(8, 10))
+		set_pos_and_scale($P2Goal2, Vector2(20, 540), Vector2(8, 10))
+		set_pos_and_scale($P1Goal1, Vector2(4000, 576), Vector2(8, 3))
+		set_pos_and_scale($P1Goal2, Vector2(1900, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(200, 540), Vector2(1720, 540), Vector2(960, 200))
 		$PointDisplay.position = Vector2(1760, 33)
 		$PointDisplay.rotation_degrees = -90
@@ -62,10 +61,10 @@ func _ready():
 		$CoralReef.show()
 		$CoralReef.collision_layer = 1
 		$CoralReef.collision_mask = 1
-		set_pos_and_scale($P1Goal1, Vector2(4000, 576), Vector2(8, 3))
-		set_pos_and_scale($P1Goal2, Vector2(20, 540), Vector2(8, 10))
 		set_pos_and_scale($P2Goal1, Vector2(4000, 576), Vector2(8, 3))
-		set_pos_and_scale($P2Goal2, Vector2(1900, 540), Vector2(8, 10))
+		set_pos_and_scale($P2Goal2, Vector2(20, 540), Vector2(8, 10))
+		set_pos_and_scale($P1Goal1, Vector2(4000, 576), Vector2(8, 3))
+		set_pos_and_scale($P1Goal2, Vector2(1900, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(550, 672), Vector2(1370, 672), Vector2(960, 200))
 		$PointDisplay.position = Vector2(1488, 33)
 		$PointDisplay.rotation_degrees = -90

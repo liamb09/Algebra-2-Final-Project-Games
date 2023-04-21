@@ -3,8 +3,8 @@ extends KinematicBody2D
 var velocity = Vector2()
 var speed = 100
 var acc = 25
-var gravity = 15
-var jump_height
+var gravity = 20
+var jump_height = 800
 var screen_size
 var colliding_with
 const max_y_velocity = 1800
@@ -69,4 +69,4 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed(control_mode+"run"):
 		velocity.x = 1000*direction
 	if Input.is_action_just_pressed(control_mode+"ui_up"):
-		velocity.y = -500
+		velocity.y = -jump_height
