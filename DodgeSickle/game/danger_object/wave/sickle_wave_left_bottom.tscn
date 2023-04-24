@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/danger_object/ice_sickle/ice_sickle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/danger_object/wave/sickle_wave.tscn" type="PackedScene" id=2]
+
+[node name="SickleWaveLeftBottom" instance=ExtResource( 2 )]
+
+[node name="IceSickle" parent="Hazards" index="0" instance=ExtResource( 1 )]
+position = Vector2( -17, 62 )
+rotation_d = 0
+
+[node name="IceSickle2" parent="Hazards" index="1" instance=ExtResource( 1 )]
+position = Vector2( -18, 86 )
+rotation_d = 0
+
+[node name="IceSickle3" parent="Hazards" index="2" instance=ExtResource( 1 )]
+position = Vector2( -119, 100 )
+rotation_d = 0
+
+[node name="IceSickle4" parent="Hazards" index="3" instance=ExtResource( 1 )]
+position = Vector2( -119, 118 )
+rotation_d = 0
+
+[node name="IceSickle5" parent="Hazards" index="4" instance=ExtResource( 1 )]
+position = Vector2( -202, 63 )
+rotation_d = 0
+
+[node name="IceSickle6" parent="Hazards" index="5" instance=ExtResource( 1 )]
+position = Vector2( -202, 87 )
+rotation_d = 0

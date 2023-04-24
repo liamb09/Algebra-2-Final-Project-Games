@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/snowy_cottage_v_2.ogg-34ebd5274bc0ca0c6dbb6f17289c08f3.oggstr"
+
+[deps]
+
+source_file="res://game/sound/snowy_cottage_v_2.ogg"
+dest_files=[ "res://.import/snowy_cottage_v_2.ogg-34ebd5274bc0ca0c6dbb6f17289c08f3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

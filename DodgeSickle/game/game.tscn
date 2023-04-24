@@ -1,0 +1,137 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://game/platform/Platforms.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/player/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/game.gd" type="Script" id=3]
+[ext_resource path="res://game/level/kill_zone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/sound/8_bit_iced_village.ogg" type="AudioStream" id=5]
+[ext_resource path="res://game/manager/hazard_manager/hazard_manager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/level/effect_container.gd" type="Script" id=7]
+[ext_resource path="res://game/level/TEMP_background.png" type="Texture" id=8]
+[ext_resource path="res://game/level/snow_effect.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/manager/death_marker_manager/death_marker_manager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/sound/flame_out.wav" type="AudioStream" id=11]
+[ext_resource path="res://game/font/Equipe Basic 9h.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://game/font/fibberish.ttf" type="DynamicFontData" id=13]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 13 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="TempBackground" type="Sprite" parent="."]
+texture = ExtResource( 8 )
+centered = false
+
+[node name="SnowEffect" parent="." instance=ExtResource( 9 )]
+
+[node name="Platforms" parent="." instance=ExtResource( 1 )]
+
+[node name="KillZone" parent="." instance=ExtResource( 4 )]
+position = Vector2( 118, 152 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 69, 67 )
+collision_layer = 2
+collision_mask = 13
+
+[node name="PlayerSpawnPoint" type="Position2D" parent="."]
+position = Vector2( 69, 93 )
+
+[node name="OffScreenPos" type="Position2D" parent="."]
+position = Vector2( -26, -18 )
+
+[node name="DeathMarkerManager" parent="." instance=ExtResource( 10 )]
+
+[node name="HazardManager" parent="." instance=ExtResource( 6 )]
+
+[node name="EffectContainer" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="WinningSound" type="AudioStreamPlayer" parent="."]
+
+[node name="StartDelay" type="Timer" parent="."]
+one_shot = true
+
+[node name="OverLay" type="CanvasLayer" parent="."]
+
+[node name="LblRestart" type="Label" parent="OverLay"]
+visible = false
+margin_left = 76.0
+margin_top = 46.0
+margin_right = 153.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 2 )
+text = "Press [jump]
+ (restart)"
+
+[node name="LblWin" type="Label" parent="OverLay"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -38.0
+margin_bottom = -24.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 3 )
+text = "You Win!"
+
+[node name="DEBUG" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="DEBUG"]
+visible = false
+margin_left = 154.0
+margin_top = 2.0
+margin_right = 201.0
+margin_bottom = 16.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 4 )
+text = "Tick #"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="LblAttempt" type="Label" parent="HUD"]
+margin_left = 192.0
+margin_top = 1.0
+margin_right = 277.0
+margin_bottom = 15.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+text = "Attempt: 222"
+
+[node name="LblTimeLeft" type="Label" parent="HUD"]
+modulate = Color( 1, 1, 1, 0.117647 )
+margin_left = 85.0
+margin_top = 10.0
+margin_right = 125.0
+margin_bottom = 38.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0.505882, 0.811765, 0.913725, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "60"
+align = 1

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/8_bit_iced_village.ogg-57aa537f1e764cbd8f4cc3b18e7218a6.oggstr"
+
+[deps]
+
+source_file="res://game/sound/8_bit_iced_village.ogg"
+dest_files=[ "res://.import/8_bit_iced_village.ogg-57aa537f1e764cbd8f4cc3b18e7218a6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
