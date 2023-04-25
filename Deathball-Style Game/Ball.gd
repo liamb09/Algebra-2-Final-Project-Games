@@ -1,14 +1,10 @@
 extends RigidBody2D
 
 var screen_size
-var start_pos
 const max_dy = 2000
 
 func _ready():
 	screen_size = get_viewport_rect().size
-
-func reset():
-	position = start_pos
 
 func _integrate_forces(state):
 	$Up.global_rotation_degrees = 0

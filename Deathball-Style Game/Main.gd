@@ -1,10 +1,12 @@
-extends Node
+extends Node2D
 
-export var player1points = 3
-export var player2points = 3
-var current_map = get_tree().get_root().get_node("res://LevelSelection").get("selected_level")
+export var player1points = 5
+export var player2points = 5
+var current_map
 
-func _ready():
+func setup():
+	show()
+	current_map = LevelSelection.selected_level
 	$MidnightZone.collision_layer = 0
 	$MidnightZone.collision_mask = 0
 	$LavaZone.collision_layer = 0
@@ -70,9 +72,14 @@ func _ready():
 		$PointDisplay.rotation_degrees = -90
 		$PointDisplay2.position = Vector2(432, 33)
 		$PointDisplay2.rotation_degrees = 90
-	$Ball.reset()
+
+func _ready():
+	hide()
 
 func _process(delta):
+	if LevelSelection.is_level_selected:
+		setup()
+		LevelSelection.is_level_selected = false
 	if player1points > 0 and player2points > 0:
 		$PointDisplay.show()
 		$PointDisplay2.show()
@@ -93,7 +100,7 @@ func set_pos_and_scale(goal, pos, scale):
 func set_player_and_ball(player2_pos, player1_pos, ball_pos):
 	$Player2.position = player2_pos
 	$Player.position = player1_pos
-	$Ball.start_pos = ball_pos
+	$Ball.position = ball_pos
 
 func _on_Goal_body_entered(body):
 	if body.get_name() == "Ball":

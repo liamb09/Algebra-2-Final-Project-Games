@@ -11,11 +11,12 @@ config_version=4
 [application]
 
 config/name="Deathball-Style Game"
-run/main_scene="res://LevelSelection.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://Assets/icon.png"
 
 [autoload]
 
+LevelSelection="*res://LevelSelection.tscn"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
