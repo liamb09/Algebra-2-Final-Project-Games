@@ -21,9 +21,3 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AlligatorCollide"]
 shape = SubResource( 1 )
-
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -1.90735e-06, 5.96046e-08 )
-scale = Vector2( 3.2, 1.1 )
-
-[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

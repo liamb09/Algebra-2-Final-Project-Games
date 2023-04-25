@@ -24,6 +24,7 @@ var train_timer = 20
 onready var timer_train = $Timer
 signal train_come
 var Alligator = load("res://Alligator.tscn")
+var log_spawn_count = 0
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -85,9 +86,14 @@ func _process(delta):
 		randomize()
 		emit_signal("train_come")
 		
+func _spawning(pos_x, pos_y, num_logs):
+	while log_spawn_count < num_logs:
+		spawn_entity(pos_x, pos_y, Log)
+		log_spawn_count += 1
+		pos_x -= 200
+
 
 func _ready():
-	$Alligator.connect("Respawn", self, "_Log_respawn")
 	spawn_entity(150, 100, end_of_level)
 	spawn_entity(300, 100, end_of_level2)
 	spawn_entity(450, 100, end_of_level3)
@@ -111,6 +117,3 @@ func _on_Timer_timeout():
 	spawn_entity(-1000, 600, train)
 	$Timer.stop()
 
-func _Log_respawn():
-	#spawn_entity(16, $Alligator.position.y, Log)
-	print("work")
