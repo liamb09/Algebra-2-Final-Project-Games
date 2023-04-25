@@ -72,6 +72,7 @@ func setup():
 		$PointDisplay.rotation_degrees = -90
 		$PointDisplay2.position = Vector2(432, 33)
 		$PointDisplay2.rotation_degrees = 90
+	$Ball.reset()
 
 func _ready():
 	hide()
@@ -100,7 +101,7 @@ func set_pos_and_scale(goal, pos, scale):
 func set_player_and_ball(player2_pos, player1_pos, ball_pos):
 	$Player2.position = player2_pos
 	$Player.position = player1_pos
-	$Ball.position = ball_pos
+	$Ball.start_pos = ball_pos
 
 func _on_Goal_body_entered(body):
 	if body.get_name() == "Ball":

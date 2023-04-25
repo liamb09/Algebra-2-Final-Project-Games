@@ -36,6 +36,7 @@ control_mode = "wasd_"
 
 [node name="Ball" parent="." groups=["bodies"] instance=ExtResource( 8 )]
 position = Vector2( 960, 196 )
+mass = 1.0
 contact_monitor = true
 
 [node name="Teleports" parent="." instance=ExtResource( 7 )]
