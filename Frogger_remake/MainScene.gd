@@ -8,15 +8,22 @@ var player4 = load("res://Player4.tscn")
 var player5 = load("res://Player5.tscn")
 var Log = load("res://Log.tscn")
 var Firetruck = load("res://Firetruck.tscn")
+var Signal = load("res://Signal.tscn")
 var Police = load("res://Police.tscn")
 var end_of_level = load("res://EOLB1.tscn")
 var end_of_level2 = load("res://EOLB2.tscn")
 var end_of_level3 = load("res://EOLB3.tscn")
 var end_of_level4 = load("res://EOLB4.tscn")
 var end_of_level5 = load("res://EOLB5.tscn")
+var train = load("res://Train.tscn")
 var timer = 0
 var coin = load("res://Coin.tscn")
 var counter = 1
+var counter2 = 0
+var train_timer = 20
+onready var timer_train = $Timer
+signal train_come
+var Alligator = load("res://Alligator.tscn")
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -70,15 +77,26 @@ func _process(delta):
 	timer += delta
 	timer = stepify(timer, 0.01)
 	$Label.text = str(timer)
+	counter2 += 1
+	if counter2 == train_timer:
+		train_timer = 600+randi()%1200
+		counter2 = 0
+		timer_train.start()
+		randomize()
+		emit_signal("train_come")
+		
 
 func _ready():
+	$Alligator.connect("Respawn", self, "_Log_respawn")
 	spawn_entity(150, 100, end_of_level)
 	spawn_entity(300, 100, end_of_level2)
 	spawn_entity(450, 100, end_of_level3)
 	spawn_entity(600, 100, end_of_level4)
 	spawn_entity(750, 100, end_of_level5)
+	spawn_entity(300, 500, Signal)
 	init_at_intervals(ambulance, 16, 320, 300)
 	init_at_intervals(Log, 16, 208, 200)
+	spawn_entity(16, 208, Alligator)
 	init_at_intervals(Firetruck, 16, 448, 300)
 	init_at_intervals(Police, 16, 288, 200)
 	coin_spawn()
@@ -87,3 +105,12 @@ func _ready():
 	spawn_entity(450, 800, player3)
 	spawn_entity(600, 800, player4)
 	spawn_entity(750, 800, player5)
+
+
+func _on_Timer_timeout():
+	spawn_entity(-1000, 600, train)
+	$Timer.stop()
+
+func _Log_respawn():
+	#spawn_entity(16, $Alligator.position.y, Log)
+	print("work")

@@ -8,7 +8,9 @@ func _ready():
 func _on_EnemyCollide_area_entered(area):
 	if ("Police" in area.name 
 		or "Firetruck" in area.name 
-		or "Ambulance" in area.name):
+		or "Ambulance" in area.name
+		or "TrainCollide" in area.name
+		or "Alligator" in area.name):
 		print("hit")
 
 
