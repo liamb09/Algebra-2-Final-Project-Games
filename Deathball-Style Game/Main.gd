@@ -37,9 +37,9 @@ func setup():
 		$MidnightZone.show()
 		$MidnightZone.collision_layer = 1
 		$MidnightZone.collision_mask = 1
-		set_pos_and_scale($P2Goal1, Vector2(928, 576), Vector2(8, 3))
+		set_pos_and_scale($P2Goal1, Vector2(890, 576), Vector2(8, 3))
 		set_pos_and_scale($P2Goal2, Vector2(20, 96), Vector2(8, 0.5))
-		set_pos_and_scale($P1Goal1, Vector2(992, 576), Vector2(8, 3))
+		set_pos_and_scale($P1Goal1, Vector2(1030, 576), Vector2(8, 3))
 		set_pos_and_scale($P1Goal2, Vector2(1900, 96), Vector2(8, 0.5))
 		set_player_and_ball(Vector2(300, 540), Vector2(1620, 540), Vector2(960, 200))
 		$PointDisplay.position = Vector2(1888, 337)
