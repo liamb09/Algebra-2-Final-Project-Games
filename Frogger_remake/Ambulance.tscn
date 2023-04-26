@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Ambulance.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Ambulance.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Frogger enemies2.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.5, 12.5 )
@@ -12,15 +12,13 @@ speed = -50
 sprite_path = "EnemySprite"
 
 [node name="EnemySprite" type="Sprite" parent="."]
-scale = Vector2( 0.05, 0.05 )
+scale = Vector2( 0.739273, 0.739273 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5.5, -3.5 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 19.5, -3 )
 scale = Vector2( 0.35, 1.2 )
 
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

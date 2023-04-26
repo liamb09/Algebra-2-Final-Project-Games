@@ -43,6 +43,7 @@ Eolb2="*res://EOLB2.gd"
 Eolb3="*res://EOLB3.gd"
 Eolb4="*res://EOLB4.gd"
 Eolb5="*res://EOLB5.gd"
+Alligator="*res://Alligator.gd"
 
 [display]
 

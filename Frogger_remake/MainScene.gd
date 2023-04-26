@@ -23,8 +23,10 @@ var counter2 = 0
 var train_timer = 20
 onready var timer_train = $Timer
 signal train_come
-var Alligator = load("res://Alligator.tscn")
+var Alligator = preload("res://Alligator.tscn")
 var log_spawn_count = 0
+var truck = load("res://Truck.tscn")
+var car = load("res://Car.tscn")
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -86,7 +88,8 @@ func _process(delta):
 		randomize()
 		emit_signal("train_come")
 		
-func _spawning(pos_x, pos_y, num_logs):
+func log_spawning (pos_y, num_logs):
+	var pos_x = 800
 	while log_spawn_count < num_logs:
 		spawn_entity(pos_x, pos_y, Log)
 		log_spawn_count += 1
@@ -101,8 +104,11 @@ func _ready():
 	spawn_entity(750, 100, end_of_level5)
 	spawn_entity(300, 500, Signal)
 	init_at_intervals(ambulance, 16, 320, 300)
+	init_at_intervals(truck, 16, 600, 300)
+	init_at_intervals(car, 16, 500, 200)
+	log_spawning(208, 7)
 	init_at_intervals(Log, 16, 208, 200)
-	spawn_entity(16, 208, Alligator)
+	spawn_entity(-188, 208, Alligator)
 	init_at_intervals(Firetruck, 16, 448, 300)
 	init_at_intervals(Police, 16, 288, 200)
 	coin_spawn()

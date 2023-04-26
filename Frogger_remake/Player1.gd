@@ -18,7 +18,11 @@ func _on_LogCollision_area_entered(area):
 	if "Log" in area.name:
 		var Loggy = get_node("/root/Log")
 		speed = Loggy.speed
-
+	elif "Alligator_kill" in area.name:
+		print("hit")
+	elif "AlligatorCollide" in area.name:
+		var alligator = get_node("../Alligator")
+		speed = alligator.speed
 
 func _on_LogCollision_area_exited(area):
 	speed = 0
