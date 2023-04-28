@@ -8,8 +8,9 @@ extents = Vector2( 54, 13 )
 
 [node name="Truck" type="KinematicBody2D"]
 script = ExtResource( 1 )
-speed = -30
+speed = 80
 sprite_path = "TruckSprite"
+wait_time = 5
 
 [node name="TruckSprite" type="Sprite" parent="."]
 position = Vector2( 0, -1 )
@@ -20,13 +21,8 @@ texture = ExtResource( 2 )
 position = Vector2( -2, -1 )
 shape = SubResource( 1 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -2, -1 )
-
 [node name="Truck_collide" type="Area2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Truck_collide"]
 position = Vector2( -2, -1 )
 shape = SubResource( 1 )
-
-[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]

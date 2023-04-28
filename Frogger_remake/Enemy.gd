@@ -2,6 +2,7 @@ class_name Enemy extends KinematicBody2D
 
 export var speed: int
 export var sprite_path: String
+export var wait_time: int
 onready var sprite = get_node(sprite_path)
 
 func _ready():

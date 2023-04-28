@@ -1,7 +1,8 @@
 extends Enemy
 
-func _on_VisibilityNotifier2D_viewport_exited(viewport):
-	if position.x < 450:
-		position.x = get_viewport().size.x - 16
-	else:
+func _process(delta):
+	if stepify(position.x, 2) == get_viewport().size.x+(speed*wait_time):
 		position.x = 16
+	elif speed < 0:
+		if stepify(position.x, 2) == speed*wait_time:
+			position.x = get_viewport().size.x - 16

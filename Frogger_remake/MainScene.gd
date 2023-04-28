@@ -27,6 +27,12 @@ var Alligator = preload("res://Alligator.tscn")
 var log_spawn_count = 0
 var truck = load("res://Truck.tscn")
 var car = load("res://Car.tscn")
+var EOLB_count = 1
+var EOLB_croc = load("res://EOLB_croc.tscn")
+var EOLBS = []
+var EOLB_timer = 0
+var croc_stay = 0
+var crocInstance
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -62,9 +68,10 @@ func spawn_at_intervals(sprite_path, pos_y, interval_time, timer):
 		timer = 0
 	return timer
 
-func init_at_intervals(sprite, pos_x, pos_y, interval_time):
+func init_at_intervals(sprite, pos_x, pos_y, interval_time, spawn_num):
+	var spawned_num = 0
 	var screen_size_x = get_viewport().size.x
-	while pos_x < screen_size_x and pos_x > 0:
+	while pos_x < screen_size_x and pos_x > 0 and spawned_num < spawn_num:
 		var sprite_instnance = sprite.instance()
 		sprite_instnance.position.y = pos_y
 		if sprite_instnance.speed > 0:
@@ -75,9 +82,12 @@ func init_at_intervals(sprite, pos_x, pos_y, interval_time):
 			sprite_instnance.position.x = screen_size_x - pos_x
 			add_child(sprite_instnance)
 			pos_x += interval_time
+		spawned_num += 1
 
 func _process(delta):
 	timer += delta
+	EOLB_timer += delta
+	croc_stay += delta
 	timer = stepify(timer, 0.01)
 	$Label.text = str(timer)
 	counter2 += 1
@@ -87,6 +97,36 @@ func _process(delta):
 		timer_train.start()
 		randomize()
 		emit_signal("train_come")
+	if int(EOLB_timer) == 3 and EOLB_timer != 0:
+		EOLB_count = 1+randi()%5
+		match EOLB_count:
+			1:
+				crocInstance = EOLB_croc.instance()
+				crocInstance.position.x = 150
+				crocInstance.position.y = 100
+				add_child(crocInstance)
+			2:
+				crocInstance = EOLB_croc.instance()
+				crocInstance.position.x = 300
+				crocInstance.position.y = 100
+				add_child(crocInstance)
+			3:
+				crocInstance = EOLB_croc.instance()
+				crocInstance.position.x = 450
+				crocInstance.position.y = 100
+				add_child(crocInstance)
+			4:
+				crocInstance = EOLB_croc.instance()
+				crocInstance.position.x = 600
+				crocInstance.position.y = 100
+				add_child(crocInstance)
+			5:
+				crocInstance = EOLB_croc.instance()
+				crocInstance.position.x = 750
+				crocInstance.position.y = 100
+				add_child(crocInstance)
+		randomize()
+		EOLB_timer = 0
 		
 func log_spawning (pos_y, num_logs):
 	var pos_x = 800
@@ -95,7 +135,6 @@ func log_spawning (pos_y, num_logs):
 		log_spawn_count += 1
 		pos_x -= 200
 
-
 func _ready():
 	spawn_entity(150, 100, end_of_level)
 	spawn_entity(300, 100, end_of_level2)
@@ -103,14 +142,14 @@ func _ready():
 	spawn_entity(600, 100, end_of_level4)
 	spawn_entity(750, 100, end_of_level5)
 	spawn_entity(300, 500, Signal)
-	init_at_intervals(ambulance, 16, 320, 300)
-	init_at_intervals(truck, 16, 600, 300)
-	init_at_intervals(car, 16, 500, 200)
+	init_at_intervals(ambulance, 16, 320, 300, 20)
+	init_at_intervals(truck, 16, 600, 300, 20)
+	init_at_intervals(car, 16, 500, 200, 2)
 	log_spawning(208, 7)
-	init_at_intervals(Log, 16, 208, 200)
+	init_at_intervals(Log, 16, 208, 200, 20)
 	spawn_entity(-188, 208, Alligator)
-	init_at_intervals(Firetruck, 16, 448, 300)
-	init_at_intervals(Police, 16, 288, 200)
+	init_at_intervals(Firetruck, 16, 448, 300, 5)
+	init_at_intervals(Police, 16, 288, 200, 1)
 	coin_spawn()
 	spawn_entity(150, 800, player)
 	spawn_entity(300, 800, player2)
@@ -122,4 +161,3 @@ func _ready():
 func _on_Timer_timeout():
 	spawn_entity(-1000, 600, train)
 	$Timer.stop()
-
