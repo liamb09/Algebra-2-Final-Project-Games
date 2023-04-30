@@ -1,16 +1,12 @@
 extends Node2D
 
 var ambulance = load("res://Ambulance.tscn")
-var player = load("res://Player1.tscn")
-var player2 = load("res://Player2.tscn") 
-var player3 = load("res://Player3.tscn")
-var player4 = load("res://Player4.tscn")
-var player5 = load("res://Player5.tscn")
+var player1 = load("res://Player1.tscn")
 var Log = load("res://Log.tscn")
 var Firetruck = load("res://Firetruck.tscn")
 var Signal = load("res://Signal.tscn")
 var Police = load("res://Police.tscn")
-var end_of_level = load("res://EOLB1.tscn")
+var end_of_level1 = load("res://EOLB1.tscn")
 var end_of_level2 = load("res://EOLB2.tscn")
 var end_of_level3 = load("res://EOLB3.tscn")
 var end_of_level4 = load("res://EOLB4.tscn")
@@ -23,7 +19,7 @@ var counter2 = 0
 var train_timer = 20
 onready var timer_train = $Timer
 signal train_come
-var Alligator = preload("res://Alligator.tscn")
+var Alligator = load("res://Alligator.tscn")
 var log_spawn_count = 0
 var truck = load("res://Truck.tscn")
 var car = load("res://Car.tscn")
@@ -33,6 +29,14 @@ var EOLBS = []
 var EOLB_timer = 0
 var croc_stay = 0
 var crocInstance
+var i = 0
+var Players
+var players_used = 0
+onready var EOLB1 = get_node("/root/Eolb1")
+onready var EOLB2 = get_node("/root/Eolb2")
+onready var EOLB3 = get_node("/root/Eolb3")
+onready var EOLB4 = get_node("/root/Eolb4")
+onready var EOLB5 = get_node("/root/Eolb5")
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -127,16 +131,10 @@ func _process(delta):
 				add_child(crocInstance)
 		randomize()
 		EOLB_timer = 0
-		
-func log_spawning (pos_y, num_logs):
-	var pos_x = 800
-	while log_spawn_count < num_logs:
-		spawn_entity(pos_x, pos_y, Log)
-		log_spawn_count += 1
-		pos_x -= 200
 
 func _ready():
-	spawn_entity(150, 100, end_of_level)
+	$Player1/EOLBCollide.connect("area_entered", self, "_spawn_new_")
+	spawn_entity(150, 100, end_of_level1)
 	spawn_entity(300, 100, end_of_level2)
 	spawn_entity(450, 100, end_of_level3)
 	spawn_entity(600, 100, end_of_level4)
@@ -145,19 +143,38 @@ func _ready():
 	init_at_intervals(ambulance, 16, 320, 300, 20)
 	init_at_intervals(truck, 16, 600, 300, 20)
 	init_at_intervals(car, 16, 500, 200, 2)
-	log_spawning(208, 7)
 	init_at_intervals(Log, 16, 208, 200, 20)
 	spawn_entity(-188, 208, Alligator)
 	init_at_intervals(Firetruck, 16, 448, 300, 5)
 	init_at_intervals(Police, 16, 288, 200, 1)
 	coin_spawn()
-	spawn_entity(150, 800, player)
-	spawn_entity(300, 800, player2)
-	spawn_entity(450, 800, player3)
-	spawn_entity(600, 800, player4)
-	spawn_entity(750, 800, player5)
+	while i < 7:
+		var playerInstance = player1.instance()
+		playerInstance.position.x = 450
+		playerInstance.position.y = 800
+		#playerInstance.visible = not playerInstance.visible
+		add_child(playerInstance)
+		playerInstance.add_to_group("Players")
+		i += 1
+	Players = get_tree().get_nodes_in_group("Players")
+	Players[0].remove_from_group("Players")
+	for sprite in Players:
+		var path1 = "%s/EOLBCollide"
+		var path2 = path1 % sprite
+		var sprite1 = get_node(path2)
+		sprite1.connect("area_entered", self, "_spawn_new_")
+		sprite.set_process(false)
+		sprite.set_process_unhandled_input(false)
 
 
 func _on_Timer_timeout():
 	spawn_entity(-1000, 600, train)
 	$Timer.stop()
+
+func _spawn_new_(area):
+	if "EOLB_collide" in area.name:
+		print("hoi")
+		Players[players_used].set_process(true)
+		Players[players_used].set_process_unhandled_input(true)
+		#Players[players_used].visible = true
+		players_used += 1

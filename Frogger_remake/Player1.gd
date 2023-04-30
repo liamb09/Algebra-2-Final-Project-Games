@@ -1,6 +1,7 @@
 extends player
 
 var colide
+signal spawn_new
 
 func _ready():
 	set_process_unhandled_input(true)
@@ -28,7 +29,7 @@ func _on_LogCollision_area_exited(area):
 	speed = 0
 
 func _on_EOLBCollide_area_entered(area):
-	if "EOLB_collide1" in area.name and EOLB1.status[0] == true:
+	if "EOLB_collide1" in area.name and EOLB1.status[0] == true: 
 		EOLB_hit(player1, EOLB1, 1)
 	elif "EOLB_collide2" in area.name and EOLB2.status[0] == true:
 		EOLB_hit(player1, EOLB2, 1)
