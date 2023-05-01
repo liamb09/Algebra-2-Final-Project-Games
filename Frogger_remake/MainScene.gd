@@ -27,7 +27,6 @@ var EOLB_count = 1
 var EOLB_croc = load("res://EOLB_croc.tscn")
 var EOLBS = []
 var EOLB_timer = 0
-var croc_stay = 0
 var crocInstance
 var i = 0
 var Players
@@ -37,6 +36,8 @@ onready var EOLB2 = get_node("/root/Eolb2")
 onready var EOLB3 = get_node("/root/Eolb3")
 onready var EOLB4 = get_node("/root/Eolb4")
 onready var EOLB5 = get_node("/root/Eolb5")
+var croc_timer = 0
+var croc_is_active = false
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -91,7 +92,6 @@ func init_at_intervals(sprite, pos_x, pos_y, interval_time, spawn_num):
 func _process(delta):
 	timer += delta
 	EOLB_timer += delta
-	croc_stay += delta
 	timer = stepify(timer, 0.01)
 	$Label.text = str(timer)
 	counter2 += 1
@@ -131,7 +131,13 @@ func _process(delta):
 				add_child(crocInstance)
 		randomize()
 		EOLB_timer = 0
-
+		croc_is_active = true
+	if croc_is_active:
+		croc_timer += delta
+	if int(croc_timer) == 2:
+		remove_child(crocInstance)
+		croc_timer = 0
+		croc_is_active = false
 func _ready():
 	$Player1/EOLBCollide.connect("area_entered", self, "_spawn_new_")
 	spawn_entity(150, 100, end_of_level1)
@@ -144,6 +150,7 @@ func _ready():
 	init_at_intervals(truck, 16, 600, 300, 20)
 	init_at_intervals(car, 16, 500, 200, 2)
 	init_at_intervals(Log, 16, 208, 200, 20)
+	init_at_intervals(Log, 16, 272, 200, 20)
 	spawn_entity(-188, 208, Alligator)
 	init_at_intervals(Firetruck, 16, 448, 300, 5)
 	init_at_intervals(Police, 16, 288, 200, 1)
@@ -152,7 +159,7 @@ func _ready():
 		var playerInstance = player1.instance()
 		playerInstance.position.x = 450
 		playerInstance.position.y = 800
-		#playerInstance.visible = not playerInstance.visible
+		playerInstance.visible = not playerInstance.visible
 		add_child(playerInstance)
 		playerInstance.add_to_group("Players")
 		i += 1
@@ -176,5 +183,8 @@ func _spawn_new_(area):
 		print("hoi")
 		Players[players_used].set_process(true)
 		Players[players_used].set_process_unhandled_input(true)
-		#Players[players_used].visible = true
+		Players[players_used].visible =  not Players[players_used].visible
 		players_used += 1
+
+func _on_croc_timout():
+	print("hallo")
