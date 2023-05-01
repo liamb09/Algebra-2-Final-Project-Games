@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Maps/lava_zone.tres" type="TileSet" id=1]
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://PointDisplay.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Goal.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://FadeBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Teleports.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=8]
 [ext_resource path="res://MidnightZone.tscn" type="PackedScene" id=9]
@@ -99,8 +100,16 @@ custom_colors/default_color = Color( 1, 0, 0, 1 )
 text = "    Player 1 Wins!
 Player 2 got DOMINATED!"
 
+[node name="FadeBox" parent="." instance=ExtResource( 6 )]
+visible = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="teleport" from="Teleports" to="Ball" method="_on_Teleports_teleport"]
 [connection signal="body_entered" from="P1Goal1" to="." method="_on_Goal_body_entered"]
 [connection signal="body_entered" from="P1Goal2" to="." method="_on_Goal_body_entered"]
 [connection signal="body_entered" from="P2Goal1" to="." method="_on_Goal2_body_entered"]
 [connection signal="body_entered" from="P2Goal2" to="." method="_on_Goal2_body_entered"]
+[connection signal="unpause" from="FadeBox" to="." method="_on_FadeBox_unpause"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

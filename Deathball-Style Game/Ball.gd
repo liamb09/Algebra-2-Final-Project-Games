@@ -9,11 +9,11 @@ func _ready():
 
 func reset():
 	position = start_pos
+	linear_velocity = Vector2.ZERO
 	
 func _integrate_forces(state):
 	$Up.global_rotation_degrees = 0
 	$Down.global_rotation_degrees = 0
-	print(linear_velocity.y)
 	if abs(linear_velocity.y) <= 150 or $Up.is_colliding():
 		physics_material_override.absorbent = 1
 	else:

@@ -1,8 +1,11 @@
 extends Node2D
 
-export var player1points = 1
-export var player2points = 1
+var max_lives = 1
+var player1points = max_lives
+var player2points = max_lives
 var current_map
+var playing = false
+var won = false
 
 func setup():
 	show()
@@ -86,13 +89,16 @@ func _process(delta):
 		$PointDisplay2.show()
 		$PointDisplay.frame = 5 - player2points
 		$PointDisplay2.frame = 5 - player1points
-	else:
+	elif not won:
+		won = true
 		$PointDisplay.hide()
 		$PointDisplay2.hide()
 		if player1points == 0:
 			$WinMessage.bbcode_text = "    Player 2 Wins!\nPlayer 1 got DOMINATED!!"
 		else:
 			$WinMessage.bbcode_text = "    Player 1 Wins!\nPlayer 2 got DOMINATED!!"
+		$Timer.start()
+		
 
 func set_pos_and_scale(goal, pos, scale):
 	goal.position = pos
@@ -115,3 +121,16 @@ func _on_Goal2_body_entered(body):
 		player2points -= 1
 		$Ball.reset()
 		$Ball.linear_velocity = Vector2.ZERO
+
+
+func _on_FadeBox_unpause():
+	
+	player1points = max_lives
+	player2points = max_lives
+	won = false
+	hide()
+	LevelSelection.show()
+
+
+func _on_Timer_timeout():
+	get_tree().paused = true

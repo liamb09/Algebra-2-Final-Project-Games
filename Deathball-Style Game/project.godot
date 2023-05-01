@@ -17,6 +17,7 @@ config/icon="res://Assets/icon.png"
 [autoload]
 
 LevelSelection="*res://LevelSelection.tscn"
+FadeBox="*res://FadeBox.tscn"
 PluginSettings="*res://addons/github-integration/scripts/PluginSettings.gd"
 IconLoaderGithub="*res://addons/github-integration/scripts/IconLoaderGithub.gd"
 UserData="*res://addons/github-integration/scripts/user_data.gd"
