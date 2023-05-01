@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/Log (1).png" type="Texture" id=1]
 [ext_resource path="res://Log.gd" type="Script" id=2]
@@ -11,6 +11,9 @@ extents = Vector2( 16, 5 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 26.5, 9.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 31.5, 19 )
 
 [node name="Log" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -45,5 +48,12 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlligatorReplace"]
 shape = SubResource( 1 )
 
+[node name="OtterCollide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OtterCollide"]
+position = Vector2( -0.5, 0 )
+shape = SubResource( 4 )
+
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
 [connection signal="body_entered" from="AlligatorReplace" to="." method="_on_AlligatorReplace_body_entered"]
+[connection signal="body_entered" from="OtterCollide" to="." method="_on_OtterCollide_body_entered"]

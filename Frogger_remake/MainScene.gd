@@ -11,6 +11,7 @@ var end_of_level2 = load("res://EOLB2.tscn")
 var end_of_level3 = load("res://EOLB3.tscn")
 var end_of_level4 = load("res://EOLB4.tscn")
 var end_of_level5 = load("res://EOLB5.tscn")
+var Otter = load("res://Otter.tscn")
 var train = load("res://Train.tscn")
 var timer = 0
 var coin = load("res://Coin.tscn")
@@ -140,6 +141,7 @@ func _process(delta):
 		croc_is_active = false
 func _ready():
 	$Player1/EOLBCollide.connect("area_entered", self, "_spawn_new_")
+	coin_spawn()
 	spawn_entity(150, 100, end_of_level1)
 	spawn_entity(300, 100, end_of_level2)
 	spawn_entity(450, 100, end_of_level3)
@@ -152,9 +154,9 @@ func _ready():
 	init_at_intervals(Log, 16, 208, 200, 20)
 	init_at_intervals(Log, 16, 272, 200, 20)
 	spawn_entity(-188, 208, Alligator)
+	spawn_entity(-188, 272, Otter)
 	init_at_intervals(Firetruck, 16, 448, 300, 5)
 	init_at_intervals(Police, 16, 288, 200, 1)
-	coin_spawn()
 	while i < 7:
 		var playerInstance = player1.instance()
 		playerInstance.position.x = 450

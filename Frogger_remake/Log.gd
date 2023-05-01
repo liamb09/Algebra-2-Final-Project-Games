@@ -13,3 +13,8 @@ func _on_AlligatorReplace_body_entered(body):
 func _on_VisibilityNotifier2D_viewport_exited(viewport):
 	position.x = 16
 	show()
+
+
+func _on_OtterCollide_body_entered(body):
+	if "Otter" in body.name:
+		queue_free()
