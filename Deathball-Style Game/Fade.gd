@@ -10,7 +10,6 @@ func _ready():
 	color = Color(0, 0, 0, 0)
 
 func _process(delta):
-	print(fading)
 	if get_tree().paused:
 		fading = true
 		show()
