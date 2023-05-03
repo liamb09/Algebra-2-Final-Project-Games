@@ -7,6 +7,8 @@ const GAME_LENGTH: int = 60
 
 onready var player: Player = get_node("Player")
 onready var kill_zone: Area2D = get_node("KillZone")
+onready var kill_zone1: Area2D = get_node("KillZone2")
+onready var kill_zone2: Area2D = get_node("KillZone3")
 onready var effect_conatainer: EffectContainer = get_node("EffectContainer")
 onready var gamer_timer: Timer = get_node("GameTimer")
 onready var hazard_manager: HazardManager = get_node("HazardManager")
@@ -102,6 +104,8 @@ func _connection_child_signals() -> void:
 	#### self.player.connect("on_death", self, "_play_gameoever_sound")
 	self.player.connect("on_death", self, "_end_game")
 	self.kill_zone.connect("body_entered", self, "_on_player_falling")
+	self.kill_zone1.connect("body_entered", self, "_on_player_falling")
+	self.kill_zone2.connect("body_entered", self, "_on_player_falling")
 	self.player.connect("on_air_jump", self.effect_conatainer, "add_effect_to_screen")
 	self.gamer_timer.connect("timeout", self, "_tick")
 	self.gameover_sound.connect("finished", self, "_end_game")
