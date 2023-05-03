@@ -13,7 +13,7 @@ extents = Vector2( 16, 5 )
 extents = Vector2( 26.5, 9.5 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 31.5, 19 )
+extents = Vector2( 31.5, 10 )
 
 [node name="Log" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -51,9 +51,8 @@ shape = SubResource( 1 )
 [node name="OtterCollide" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OtterCollide"]
-position = Vector2( -0.5, 0 )
+position = Vector2( -0.5, -2 )
 shape = SubResource( 4 )
 
 [connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
 [connection signal="body_entered" from="AlligatorReplace" to="." method="_on_AlligatorReplace_body_entered"]
-[connection signal="body_entered" from="OtterCollide" to="." method="_on_OtterCollide_body_entered"]

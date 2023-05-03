@@ -7,10 +7,6 @@ var Firetruck = load("res://Firetruck.tscn")
 var Signal = load("res://Signal.tscn")
 var Police = load("res://Police.tscn")
 var end_of_level1 = load("res://EOLB1.tscn")
-var end_of_level2 = load("res://EOLB2.tscn")
-var end_of_level3 = load("res://EOLB3.tscn")
-var end_of_level4 = load("res://EOLB4.tscn")
-var end_of_level5 = load("res://EOLB5.tscn")
 var Otter = load("res://Otter.tscn")
 var train = load("res://Train.tscn")
 var timer = 0
@@ -39,6 +35,8 @@ onready var EOLB4 = get_node("/root/Eolb4")
 onready var EOLB5 = get_node("/root/Eolb5")
 var croc_timer = 0
 var croc_is_active = false
+var otter_come = 0
+var otter_timer = 0
 
 func spawn_entity(pos_x, pos_y, sprite):
 	var spriteInstance = sprite.instance()
@@ -93,6 +91,7 @@ func init_at_intervals(sprite, pos_x, pos_y, interval_time, spawn_num):
 func _process(delta):
 	timer += delta
 	EOLB_timer += delta
+	otter_timer += delta
 	timer = stepify(timer, 0.01)
 	$Label.text = str(timer)
 	counter2 += 1
@@ -139,14 +138,21 @@ func _process(delta):
 		remove_child(crocInstance)
 		croc_timer = 0
 		croc_is_active = false
+	otter_come = 5+randi()%15
+	if int(otter_timer) == otter_come:
+		randomize()
+		spawn_entity(-188, 272, Otter)
+		otter_timer = 0
 func _ready():
+	var h = 0
+	var EOLB_x = 150
+	var EOLB_y = 100
 	$Player1/EOLBCollide.connect("area_entered", self, "_spawn_new_")
 	coin_spawn()
-	spawn_entity(150, 100, end_of_level1)
-	spawn_entity(300, 100, end_of_level2)
-	spawn_entity(450, 100, end_of_level3)
-	spawn_entity(600, 100, end_of_level4)
-	spawn_entity(750, 100, end_of_level5)
+	while h < 5:
+		spawn_entity(EOLB_x, EOLB_y, end_of_level1)
+		h+=1
+		EOLB_x += 150
 	spawn_entity(300, 500, Signal)
 	init_at_intervals(ambulance, 16, 320, 300, 20)
 	init_at_intervals(truck, 16, 600, 300, 20)
@@ -154,7 +160,6 @@ func _ready():
 	init_at_intervals(Log, 16, 208, 200, 20)
 	init_at_intervals(Log, 16, 272, 200, 20)
 	spawn_entity(-188, 208, Alligator)
-	spawn_entity(-188, 272, Otter)
 	init_at_intervals(Firetruck, 16, 448, 300, 5)
 	init_at_intervals(Police, 16, 288, 200, 1)
 	while i < 7:
@@ -181,7 +186,9 @@ func _on_Timer_timeout():
 	$Timer.stop()
 
 func _spawn_new_(area):
-	if "EOLB_collide" in area.name:
+	var collided_area = "%s/../"
+	var collided_obj = get_node(collided_area % area.get_path())
+	if "EOLB_collide" in area.name and collided_obj.status[0] == true:
 		print("hoi")
 		Players[players_used].set_process(true)
 		Players[players_used].set_process_unhandled_input(true)
