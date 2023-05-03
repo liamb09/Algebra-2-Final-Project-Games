@@ -14,7 +14,7 @@ func reset():
 func _integrate_forces(state):
 	$Up.global_rotation_degrees = 0
 	$Down.global_rotation_degrees = 0
-	if abs(linear_velocity.y) <= 150 or $Up.is_colliding():
+	if (abs(linear_velocity.y) <= 150 and $Down.is_colliding()) or $Up.is_colliding():
 		physics_material_override.absorbent = 1
 	else:
 		physics_material_override.absorbent = 0
