@@ -94,9 +94,9 @@ func _process(delta):
 		$PointDisplay.hide()
 		$PointDisplay2.hide()
 		if player2points == 0:
-			$WinMessage.bbcode_text = "    Player 2 Wins!\nPlayer 1 got DOMINATED!!"
+			$WinMessage.bbcode_text = "            Player 1 Wins!\nPlayer 2 got DOMINATED!"
 		else:
-			$WinMessage.bbcode_text = "    Player 1 Wins!\nPlayer 2 got DOMINATED!!"
+			$WinMessage.bbcode_text = "            Player 2 Wins!\nPlayer 1 got DOMINATED!"
 		$Timer.start()
 	if Input.is_action_pressed("P1Quit") and Input.is_action_pressed("P2Quit"):
 		$Ball.reset()
@@ -132,7 +132,7 @@ func _on_FadeBox_unpause():
 	won = false
 	hide()
 	LevelSelection.show()
-
+	LevelSelection.focus_button()
 
 func _on_Timer_timeout():
 	get_tree().paused = true
