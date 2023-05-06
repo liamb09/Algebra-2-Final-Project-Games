@@ -27,15 +27,22 @@ var player_attempts: int
 var has_finished_once: bool = false
 var _time_left: int
 var beaten = false
+const SAVE_FILE_PATH = "user://downloads/Algebra-2-Final-Project-Games-main-5/DodgeSickle/data"
+var highscore = 0
 
 func _ready():
 	self.player_attempts = 0
 	self._connection_child_signals() 
 	self._set_up_new_game()
+	_load_high_score()
 
 func _physics_process(delta):
 	if Input.is_action_pressed("quit"):
 		get_tree().quit()
+	if highscore == 0:
+		$HUD/LblHighScore.text = "Highscore: 60"
+	else:
+		$HUD/LblHighScore.text = "Highscore: " + str(highscore)
 
 func _set_up_new_game() -> void:
 	self.player.is_freezable = true
@@ -125,6 +132,11 @@ func _end_game(_pos: Vector2):
 	$DeathMarkerManager.add_marker_to_screen(_pos)
 	self.player.global_position = self.off_screen_pos.global_position
 	self._remove_hazards()
+	if highscore == 0:
+		highscore = 60
+	if _time_left < highscore:
+		highscore = _time_left
+		_save_high_score()
 	if beaten == false:
 		$OverLay/LblRestart.visible = true
 		print('gameover')
@@ -137,3 +149,15 @@ func _game_won() -> void:
 	$OverLay/LblWin.visible = true
 	beaten = true
 	print('You win!')
+
+func _save_high_score():
+	var save_data = File.new()
+	save_data.open(SAVE_FILE_PATH, File.WRITE)
+	save_data.store_var(highscore)
+	save_data.close()
+
+func _load_high_score():
+	var save_data = File.new()
+	if save_data.file_exists(SAVE_FILE_PATH):
+		save_data.open(SAVE_FILE_PATH, File.READ)
+		highscore = save_data.get_var()

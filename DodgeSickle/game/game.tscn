@@ -132,6 +132,16 @@ rect_scale = Vector2( 0.5, 0.5 )
 custom_fonts/font = SubResource( 1 )
 text = "Attempt: 222"
 
+[node name="LblHighScore" type="Label" parent="HUD"]
+margin_left = 13.0
+margin_top = 1.0
+margin_right = 98.0
+margin_bottom = 17.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = SubResource( 1 )
+text = "Highscore"
+align = 2
+
 [node name="LblTimeLeft" type="Label" parent="HUD"]
 modulate = Color( 1, 1, 1, 0.117647 )
 margin_left = 85.0
