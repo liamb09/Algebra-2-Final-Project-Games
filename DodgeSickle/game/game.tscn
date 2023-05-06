@@ -45,11 +45,11 @@ centered = false
 position = Vector2( 118, 152 )
 
 [node name="KillZone2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 263, 31 )
+position = Vector2( 269, 31 )
 scale = Vector2( 0.2, 11 )
 
 [node name="KillZone3" parent="." instance=ExtResource( 4 )]
-position = Vector2( -24, 40 )
+position = Vector2( -29, 40 )
 scale = Vector2( 0.2, 10 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
