@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Fade.gd" type="Script" id=1]
+
+[node name="FadeBox" type="ColorRect"]
+pause_mode = 2
+visible = false
+margin_left = -80.0
+margin_top = -78.0
+margin_right = 1960.0
+margin_bottom = 1694.0
+color = Color( 0, 0, 0, 0 )
+script = ExtResource( 1 )

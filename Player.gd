@@ -1,45 +1,72 @@
-extends Area2D
+extends KinematicBody2D
 
-class_name player
+var velocity = Vector2()
+var speed = 100
+var acc = 25
+var gravity = 20
+var jump_height = 800
+var screen_size
+var colliding_with
+const max_y_velocity = 1800
+var inertia = 300
+var touching_wall_side # which side of the player is touching the wall
+var current_map
+export var start_pos = Vector2.ZERO
+export var control_mode = ""
+var direction = 1 #1 means right, -1 means left
 
-const tile_size = 32
-var speed = 0
-var num_spawned = 0
-
-onready var player1 = get_node("/root/Player1")
-
-var inputs = {"right": Vector2.RIGHT,
-			  "left": Vector2.LEFT,
-			  "up": Vector2.UP,
-			  "down": Vector2.DOWN
-}
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
-	position = position.snapped(Vector2.ONE * tile_size)
-	position += Vector2.ONE * tile_size/2
-
-
-func _unhandled_input(event):
-	for dir in inputs.keys():
-		if event.is_action_pressed(dir):
-			move(dir)
-			
-
-func _process(delta):
-	position.x = clamp(position.x, 0+16, get_viewport().size.x-16)
-	position.y = clamp(position.y, 0+16, get_viewport().size.y-16)
-	position.x += speed*delta
+	screen_size = get_viewport_rect().size
+	reset()
+	current_map = get_parent().current_map
+	if control_mode == "wasd_":
+		$AnimatedSprite.frame = 0
+	else:
+		$AnimatedSprite.frame = 1
 	
-func move(dir):
-	position += inputs[dir] * tile_size
-	emit_signal("spawn_new")
+func reset():
+	position = start_pos
 
-
-func EOLB_hit(Player, the_EOLB, start):
-	num_spawned += 1
-	for i in range(start, 5):
-		the_EOLB.status[i] = false
-	set_process_unhandled_input(false)
-	set_process(false)
-	
-
+func _physics_process(delta):
+	if position.x < 32:
+		position.x = screen_size.x - 32
+	elif position.x > screen_size.x - 32:
+		position.x = 32
+	if position.y < 32:
+		position.y = screen_size.y - 32
+	if position.y > screen_size.y - 32:
+		position.y = 32
+	if velocity.y > max_y_velocity:
+		velocity.y = max_y_velocity
+	colliding_with = []
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.is_in_group("bodies") and not $DownRayCast.is_colliding():
+			collision.collider.apply_central_impulse(-collision.normal * inertia)
+		colliding_with.append(collision.collider.name)
+	move_and_slide_with_snap(velocity, Vector2.DOWN, Vector2.UP, false, 4, PI/4 - 0.04, false)
+	if is_on_floor():
+		velocity.y = 0
+	if colliding_with.find(current_map) == -1 or is_on_ceiling() or is_on_wall():
+		velocity.y += gravity
+	if is_on_wall():
+		if $LeftRayCast.is_colliding():
+			touching_wall_side = "left"
+		elif $RightRayCast.is_colliding():
+			touching_wall_side = "right"
+	else:
+		touching_wall_side = ""
+	if Input.is_action_pressed(control_mode+"ui_right") and touching_wall_side != "right":
+		velocity.x = max(velocity.x+acc, speed)
+		direction = 1
+	elif Input.is_action_pressed(control_mode+"ui_left") and touching_wall_side != "left":
+		velocity.x = min(velocity.x-acc, -speed)
+		direction = -1
+	else:
+		velocity.x *= .8
+		direction = 0
+	if Input.is_action_just_pressed(control_mode+"run"):
+		velocity.x = 1000*direction
+	if Input.is_action_just_pressed(control_mode+"ui_up"):
+		velocity.y = -jump_height
