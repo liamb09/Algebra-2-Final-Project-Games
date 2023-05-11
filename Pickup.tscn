@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/FroggerEnemyVehicles6.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 18 )
+
+[node name="Pickup" type="KinematicBody2D"]
+script = ExtResource( 1 )
+speed = 100
+sprite_path = "PickupSprite"
+wait_time = 3
+
+[node name="PickupSprite" type="Sprite" parent="."]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="Pickup_collide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pickup_collide"]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
