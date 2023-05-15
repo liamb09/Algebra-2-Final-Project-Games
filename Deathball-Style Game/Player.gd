@@ -14,19 +14,22 @@ var current_map
 export var start_pos = Vector2.ZERO
 export var control_mode = ""
 var direction = 1 #1 means right, -1 means left
+var current_anim
+var current_frame
+var i = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	reset()
 	current_map = get_parent().current_map
-	if control_mode == "wasd_":
-		$AnimatedSprite.frame = 0
-	else:
-		$AnimatedSprite.frame = 1
 	
 func reset():
 	position = start_pos
+	current_anim = "default"
+	current_frame = 0
+	$AnimatedSprite.animation = current_anim
+	$AnimatedSprite.frame = 0
 
 func _physics_process(delta):
 	if position.x < 32:
@@ -60,13 +63,24 @@ func _physics_process(delta):
 	if Input.is_action_pressed(control_mode+"ui_right") and touching_wall_side != "right":
 		velocity.x = max(velocity.x+acc, speed)
 		direction = 1
+		current_anim = "walking"
+		$AnimatedSprite.flip_h = false
 	elif Input.is_action_pressed(control_mode+"ui_left") and touching_wall_side != "left":
 		velocity.x = min(velocity.x-acc, -speed)
 		direction = -1
+		current_anim = "walking"
+		$AnimatedSprite.flip_h = true
 	else:
 		velocity.x *= .8
-		direction = 0
+		current_anim = "default"
+		current_frame = 0
 	if Input.is_action_just_pressed(control_mode+"run"):
 		velocity.x = 1000*direction
 	if Input.is_action_just_pressed(control_mode+"ui_up"):
 		velocity.y = -jump_height
+	$AnimatedSprite.animation = current_anim
+	if current_anim == "walking":
+		if i % 10 == 0:
+			current_frame += 1
+		$AnimatedSprite.frame = current_frame % 3
+	i += 1

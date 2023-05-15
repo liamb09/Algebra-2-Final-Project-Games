@@ -24,6 +24,7 @@ func setup():
 	$CoralReef.hide()
 	$WinMessage.bbcode_text = ""
 	if current_map == "LavaZone":
+		$Backgrounds.frame = 2
 		$LavaZone.show()
 		$LavaZone.collision_layer = 1
 		$LavaZone.collision_mask = 1
@@ -32,11 +33,12 @@ func setup():
 		set_pos_and_scale($P1Goal1, Vector2(1280, 1043), Vector2(16, 0.75))
 		set_pos_and_scale($P1Goal2, Vector2(1280, 4), Vector2(16, 0.75))
 		set_player_and_ball(Vector2(300, 992), Vector2(1620, 992), Vector2(960, 320))
-		$PointDisplay.position = Vector2(32, 337)
+		$PointDisplay.position = Vector2(32, 592)
 		$PointDisplay.rotation_degrees = 0
-		$PointDisplay2.position = Vector2(1888, 337)
+		$PointDisplay2.position = Vector2(1888, 592)
 		$PointDisplay2.rotation_degrees = 0
 	elif current_map == "MidnightZone":
+		$Backgrounds.frame = 3
 		$MidnightZone.show()
 		$MidnightZone.collision_layer = 1
 		$MidnightZone.collision_mask = 1
@@ -45,11 +47,12 @@ func setup():
 		set_pos_and_scale($P1Goal1, Vector2(1030, 576), Vector2(8, 3))
 		set_pos_and_scale($P1Goal2, Vector2(1910, 96), Vector2(8, 0.5))
 		set_player_and_ball(Vector2(300, 540), Vector2(1620, 540), Vector2(960, 200))
-		$PointDisplay.position = Vector2(32, 337)
-		$PointDisplay.rotation_degrees = 0
-		$PointDisplay2.position = Vector2(1888, 337)
-		$PointDisplay2.rotation_degrees = 0
+		$PointDisplay.position = Vector2(32, 241)
+		$PointDisplay.rotation_degrees = 180
+		$PointDisplay2.position = Vector2(1888, 241)
+		$PointDisplay2.rotation_degrees = 180
 	elif current_map == "UnderwaterDeadzone":
+		$Backgrounds.frame = 1
 		$UnderwaterDeadzone.show()
 		$UnderwaterDeadzone.collision_layer = 1
 		$UnderwaterDeadzone.collision_mask = 1
@@ -58,11 +61,12 @@ func setup():
 		set_pos_and_scale($P1Goal1, Vector2(4000, 576), Vector2(8, 3))
 		set_pos_and_scale($P1Goal2, Vector2(1910, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(200, 540), Vector2(1720, 540), Vector2(960, 200))
-		$PointDisplay.position = Vector2(160, 33)
+		$PointDisplay.position = Vector2(208, 33)
 		$PointDisplay.rotation_degrees = -90
-		$PointDisplay2.position = Vector2(1760, 33)
+		$PointDisplay2.position = Vector2(1712, 33)
 		$PointDisplay2.rotation_degrees = 90
 	elif current_map == "CoralReef":
+		$Backgrounds.frame = 0
 		$CoralReef.show()
 		$CoralReef.collision_layer = 1
 		$CoralReef.collision_mask = 1
@@ -72,9 +76,9 @@ func setup():
 		set_pos_and_scale($P1Goal2, Vector2(1900, 540), Vector2(8, 10))
 		set_player_and_ball(Vector2(550, 672), Vector2(1370, 672), Vector2(960, 200))
 		$PointDisplay.position = Vector2(432, 33)
-		$PointDisplay.rotation_degrees = -90
+		$PointDisplay.rotation_degrees = 90
 		$PointDisplay2.position = Vector2(1488, 33)
-		$PointDisplay2.rotation_degrees = 90
+		$PointDisplay2.rotation_degrees = -90
 	$Ball.reset()
 
 func _ready():
@@ -93,7 +97,7 @@ func _process(delta):
 		won = true
 		$PointDisplay.hide()
 		$PointDisplay2.hide()
-		if player2points == 0:
+		if player1points == 0:
 			$WinMessage.bbcode_text = "            Player 1 Wins!\nPlayer 2 got DOMINATED!"
 		else:
 			$WinMessage.bbcode_text = "            Player 2 Wins!\nPlayer 1 got DOMINATED!"
