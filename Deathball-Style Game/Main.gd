@@ -23,6 +23,8 @@ func setup():
 	$UnderwaterDeadzone.hide()
 	$CoralReef.hide()
 	$WinMessage.bbcode_text = ""
+	$PointDisplay.animation = "purple"
+	$PointDisplay2.animation = "green"
 	if current_map == "LavaZone":
 		$Backgrounds.frame = 2
 		$LavaZone.show()

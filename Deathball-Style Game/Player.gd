@@ -17,6 +17,7 @@ var direction = 1 #1 means right, -1 means left
 var current_anim
 var current_frame
 var i = 0
+var color = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,10 +26,14 @@ func _ready():
 	current_map = get_parent().current_map
 	
 func reset():
+	if control_mode == "wasd_":
+		color = "purple-"
+	else:
+		color = "green-"
 	position = start_pos
 	current_anim = "default"
 	current_frame = 0
-	$AnimatedSprite.animation = current_anim
+	$AnimatedSprite.animation = color + current_anim
 	$AnimatedSprite.frame = 0
 
 func _physics_process(delta):
@@ -78,9 +83,9 @@ func _physics_process(delta):
 		velocity.x = 1000*direction
 	if Input.is_action_just_pressed(control_mode+"ui_up"):
 		velocity.y = -jump_height
-	$AnimatedSprite.animation = current_anim
+	$AnimatedSprite.animation = color + current_anim
 	if current_anim == "walking":
-		if i % 10 == 0:
+		if i % 12 == 0:
 			current_frame += 1
 		$AnimatedSprite.frame = current_frame % 3
 	i += 1

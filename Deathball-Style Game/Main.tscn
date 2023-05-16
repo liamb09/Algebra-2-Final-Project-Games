@@ -108,11 +108,15 @@ tile_data = PoolIntArray( -196608, -536870880, 0, -196580, -536870880, 0, 65535,
 position = Vector2( 1488, 33 )
 rotation = -1.5708
 scale = Vector2( 1.8, 1.8 )
+animation = "purple"
+frame = 0
 
 [node name="PointDisplay2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 432, 33 )
 rotation = 1.5708
 scale = Vector2( 1.8, 1.8 )
+animation = "green"
+frame = 0
 
 [node name="WinMessage" type="RichTextLabel" parent="."]
 margin_left = 345.0
