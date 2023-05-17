@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Otter.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Otter.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.875, 8.75 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.25, 8 )
+
+[node name="Otter" type="KinematicBody2D"]
+script = ExtResource( 1 )
+sprite_path = "OtterSprite"
+
+[node name="OtterSprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.125, -1 )
+shape = SubResource( 1 )
+
+[node name="LogCollide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LogCollide"]
+position = Vector2( 2.75, -2 )
+shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0, 2.38419e-07 )
+
+[connection signal="area_entered" from="LogCollide" to="." method="_on_LogCollide_area_entered"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
