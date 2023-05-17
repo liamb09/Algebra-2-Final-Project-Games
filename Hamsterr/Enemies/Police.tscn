@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/FroggerEnemyVehicles0.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 460, 116.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 500, 140 )
+
+[node name="Police" type="KinematicBody2D"]
+scale = Vector2( 0.05, 0.05 )
+script = ExtResource( 1 )
+sprite_path = "PoliceSprite"
+
+[node name="PoliceSprite" type="Sprite" parent="."]
+position = Vector2( 7.62939e-06, -7.62939e-06 )
+scale = Vector2( 14.5938, 14.5938 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Police_Collide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Police_Collide"]
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 2 )

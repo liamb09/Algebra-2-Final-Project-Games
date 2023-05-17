@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/FroggerEnemyVehicles4.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 46, 10 )
+
+[node name="Truck" type="KinematicBody2D"]
+script = ExtResource( 1 )
+sprite_path = "TruckSprite"
+
+[node name="TruckSprite" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
+scale = Vector2( 0.8125, 0.8125 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, -1 )
+shape = SubResource( 1 )
+
+[node name="Truck_collide" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Truck_collide"]
+position = Vector2( -1, -2 )
+shape = SubResource( 1 )
