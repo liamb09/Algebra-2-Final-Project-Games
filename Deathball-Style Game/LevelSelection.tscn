@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ka1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://LevelSelection.gd" type="Script" id=2]
+[ext_resource path="res://Assets/LevelSelectBackground.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 10
@@ -77,6 +78,10 @@ corner_radius_bottom_left = 2
 
 [node name="LevelSelection" type="Node2D" groups=["Buttons"]]
 script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 960, 540 )
+texture = ExtResource( 3 )
 
 [node name="Title" type="RichTextLabel" parent="."]
 margin_left = 54.9999
