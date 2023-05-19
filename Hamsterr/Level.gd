@@ -38,6 +38,7 @@ var which_water = 0
 var water_y = []
 var trains_y = []
 var otter_want = false
+var next_level = "res://Levels/Level2.tscn"
 
 func spawn_entity(pos_x, pos_y, sprite, speed):
 	var spriteInstance = sprite.instance()
@@ -91,8 +92,8 @@ func spawn_at_beg():
 
 func set_player():
 	Players = get_tree().get_nodes_in_group("Players")
+	Globals.Players = get_tree().get_nodes_in_group("Players")
 	Players[0].remove_from_group("Players")
-	print(Players)
 	for sprite in Players:
 		var path1 = "%s/EOLBCollide"
 		var path2 = path1 % sprite
@@ -182,6 +183,7 @@ func _process(delta):
 		Players[players_used].set_process_unhandled_input(true)
 		Players[players_used].visible =  not Players[players_used].visible
 		players_used += 1
+		Globals.players_used = players_used
 		Globals.player_died = false
 	if water_y.has(int(Players[players_used-1].position.y)) == false:
 		Players[players_used-1].speed = 0
@@ -189,10 +191,11 @@ func _process(delta):
 		if int(Players[players_used-1].position.x) < 16 or int(Players[players_used-1].position.x) > 884:
 			remove_child(Players[players_used-1])
 			Globals.player_died = true
+	
 
 func on_done():
 	if num_completed == 5:
-		get_tree().change_scene("res://HighScore.tscn")
+		get_tree().change_scene(next_level)
 		Globals.player_time = timer
 
 func _ready():
