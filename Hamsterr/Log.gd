@@ -5,8 +5,9 @@ var log_exit = 0
 export var wait_time = 0
 
 func _ready():
-	var Players = get_tree().get_root().get_nodes_in_group("Players")
-	print(Players)
+	set_collision_layer_bit(0, true)
+	set_collision_mask_bit(0, true)
+
 func _process(delta):
 	position.x += speed*delta
 	if speed > 0:
@@ -17,6 +18,8 @@ func _process(delta):
 		if position.x < speed*wait_time:
 			position.x = get_viewport().size.x + 64
 			show()
+	
+	
 
 
 func _on_AlligatorReplace_body_entered(body):
@@ -37,7 +40,6 @@ func _on_Log_collide_area_entered(area):
 
 func _on_AlligatorReplace_body_exited(body):
 	pass
-
 
 
 func _on_Log_collide_area_exited(area):

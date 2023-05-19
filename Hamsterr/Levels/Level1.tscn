@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/Level1.gd" type="Script" id=1]
 [ext_resource path="res://Font/ka1.ttf" type="DynamicFontData" id=2]
@@ -129,6 +129,9 @@ resource_name = "Frogger_tile_set"
 size = 30
 font_data = ExtResource( 2 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 437.5, 22.5 )
+
 [node name="Level1" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -150,3 +153,12 @@ custom_fonts/font = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="EWater" type="Area2D" parent="."]
+process_priority = 2
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EWater"]
+position = Vector2( 448, 577 )
+shape = SubResource( 3 )

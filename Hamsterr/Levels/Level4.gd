@@ -1,7 +1,12 @@
 extends level
 
 func _ready():
+	water_y = [752, 720, 400, 142]
+	Globals.cur_water_y = water_y
+	otter_want = true
 	trains_y = [210]
+	next_level = "res://Highscore.tscn"
+	num_completed = 4
 	init_at_intervals(Log, 16, 756, 200, 20, -150, 0)
 	init_at_intervals(Log, 16, 724, 400, 2, 250, 1)
 	init_at_intervals(truck, 16, 692, 300, 20, 100, 0)
