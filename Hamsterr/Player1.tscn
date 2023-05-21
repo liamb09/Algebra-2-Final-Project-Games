@@ -48,16 +48,7 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollide"]
 shape = SubResource( 6 )
 
-[node name="Timer" type="Timer" parent="."]
-process_mode = 0
-wait_time = 0.215
-one_shot = true
-
 [connection signal="area_entered" from="LogCollision" to="." method="_on_LogCollision_area_entered"]
 [connection signal="area_exited" from="LogCollision" to="." method="_on_LogCollision_area_exited"]
-[connection signal="body_entered" from="LogCollision" to="." method="_on_LogCollision_body_entered"]
-[connection signal="body_exited" from="LogCollision" to="." method="_on_LogCollision_body_exited"]
 [connection signal="area_entered" from="EnemyCollide" to="." method="_on_EnemyCollide_area_entered"]
-[connection signal="body_entered" from="EnemyCollide" to="." method="_on_LogCollide_body_entered"]
 [connection signal="area_entered" from="EOLBCollide" to="." method="_on_EOLBCollide_area_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -39,6 +39,7 @@ var water_y = []
 var trains_y = []
 var otter_want = false
 var next_level = "res://Levels/Level2.tscn"
+var num_died = 0
 
 func spawn_entity(pos_x, pos_y, sprite, speed):
 	var spriteInstance = sprite.instance()
@@ -173,7 +174,6 @@ func _process(delta):
 		which_water = randi()%len(water_y)
 		spawn_entity(-188, water_y[which_water], Otter, 120)
 		otter_timer = 0
-	on_done()
 	for y in trains_y:
 		train_spawn(y)
 	if players_used == 8:
@@ -183,6 +183,7 @@ func _process(delta):
 		Players[players_used].set_process_unhandled_input(true)
 		Players[players_used].visible =  not Players[players_used].visible
 		players_used += 1
+		num_died += 1 
 		Globals.players_used = players_used
 		Globals.player_died = false
 	if water_y.has(int(Players[players_used-1].position.y)) == false:
@@ -191,13 +192,18 @@ func _process(delta):
 		if int(Players[players_used-1].position.x) < 16 or int(Players[players_used-1].position.x) > 884:
 			remove_child(Players[players_used-1])
 			Globals.player_died = true
-	
-
-func on_done():
+	if num_died == 3:
+		$Control/VBoxContainer.show()
+		$Control/VBoxContainer/Button.grab_focus()
+		Players[players_used-1].set_process_unhandled_input(false)
+	match num_died:
+		1:
+			$Control/TextureRect.hide()
+		2:
+			$Control/TextureRect2.hide()
 	if num_completed == 5:
 		get_tree().change_scene(next_level)
-		Globals.player_time = timer
-
+		num_completed = 0
 func _ready():
 	coin_spawn()
 	var h = 0
@@ -207,3 +213,4 @@ func _ready():
 		spawn_entity(EOLB_x, EOLB_y, end_of_level1, 0)
 		h+=1
 		EOLB_x += 150
+	$Control/VBoxContainer.hide()
