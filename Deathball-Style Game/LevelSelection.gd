@@ -42,3 +42,6 @@ func _on_CoralReef_pressed():
 	selected_level = "CoralReef"
 	is_level_selected = true
 	hide()
+
+func _on_Quit_pressed():
+	get_tree().quit()

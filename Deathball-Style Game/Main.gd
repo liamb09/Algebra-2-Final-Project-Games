@@ -107,6 +107,8 @@ func _process(delta):
 	if Input.is_action_pressed("P1Quit") and Input.is_action_pressed("P2Quit"):
 		$Ball.reset()
 		$Ball.linear_velocity = Vector2.ZERO
+	if Input.is_action_pressed("P1QuitGame") and Input.is_action_pressed("P2QuitGame"):
+		get_tree().paused = true
 
 func set_pos_and_scale(goal, pos, scale):
 	goal.position = pos

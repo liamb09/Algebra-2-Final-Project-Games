@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ka1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://LevelSelection.gd" type="Script" id=2]
@@ -76,6 +76,17 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="DynamicFont" id=13]
+size = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.407843, 0.407843, 0.407843, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="LevelSelection" type="Node2D" groups=["Buttons"]]
 script = ExtResource( 2 )
 
@@ -94,9 +105,9 @@ text = "Level Select"
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 margin_left = 210.0
-margin_top = 300.0
+margin_top = 260.0
 margin_right = 360.0
-margin_bottom = 364.0
+margin_bottom = 341.0
 rect_scale = Vector2( 10, 10 )
 
 [node name="LavaZoneButton" type="Button" parent="Buttons" groups=["Buttons"]]
@@ -142,7 +153,18 @@ custom_styles/focus = SubResource( 6 )
 custom_styles/normal = SubResource( 6 )
 text = "Coral Zone"
 
+[node name="Quit" type="Button" parent="Buttons" groups=["Buttons"]]
+margin_left = 58.0
+margin_top = 68.0
+margin_right = 92.5
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 13 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+text = "Quit"
+
 [connection signal="pressed" from="Buttons/LavaZoneButton" to="." method="_on_LavaZoneButton_pressed"]
 [connection signal="pressed" from="Buttons/MidnightZoneButton" to="." method="_on_MidnightZoneButton_pressed"]
 [connection signal="pressed" from="Buttons/UnderwaterDeadzoneButton" to="." method="_on_UnderwaterDeadzoneButton_pressed"]
 [connection signal="pressed" from="Buttons/CoralReef" to="." method="_on_CoralReef_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_Quit_pressed"]
