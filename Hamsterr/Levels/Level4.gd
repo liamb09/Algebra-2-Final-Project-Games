@@ -1,11 +1,10 @@
 extends level
 
 func _ready():
-	water_y = [752, 720, 400, 142]
-	Globals.cur_water_y = water_y
-	otter_want = true
+	water_y = [752, 720, 688, 656, ]
 	trains_y = [210]
 	next_level = "res://Highscore.tscn"
+	Globals.player_time = timer
 	num_completed = 4
 	init_at_intervals(Log, 16, 756, 200, 20, -150, 0)
 	init_at_intervals(Log, 16, 724, 400, 2, 250, 1)

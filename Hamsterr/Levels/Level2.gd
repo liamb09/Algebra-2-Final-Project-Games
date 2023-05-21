@@ -2,7 +2,6 @@ extends level
 
 func _ready():
 	water_y = [144, 176, 208, 496, 528, 560]
-	Globals.cur_water_y = water_y
 	otter_want = true
 	next_level = "res://Levels/Level3.tscn"
 	num_completed = 0

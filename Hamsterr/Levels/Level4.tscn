@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Sprites/Train_track.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Water.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Sprites/Grass.png" type="Texture" id=6]
 [ext_resource path="res://Sprites/Empty_road.png" type="Texture" id=7]
 [ext_resource path="res://Levels/Level4.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/Heart.png" type="Texture" id=9]
+[ext_resource path="res://Font/ka1.ttf" type="DynamicFontData" id=10]
 
 [sub_resource type="TileSet" id=2]
 resource_name = "Frogger_tile_set"
@@ -124,6 +126,22 @@ resource_name = "Frogger_tile_set"
 7/shapes = [  ]
 7/z_index = 0
 
+[sub_resource type="DynamicFont" id=3]
+size = 70
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxTexture" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+font_data = ExtResource( 10 )
+
 [node name="Level4" type="Node2D"]
 script = ExtResource( 8 )
 __meta__ = {
@@ -142,3 +160,62 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+margin_left = 200.0
+margin_top = 300.0
+margin_right = 707.0
+margin_bottom = 499.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 25
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+margin_right = 507.0
+margin_bottom = 79.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Game over"
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+margin_top = 104.0
+margin_right = 507.0
+margin_bottom = 139.0
+focus_neighbour_bottom = NodePath("../Button2")
+custom_colors/font_color_focus = Color( 0, 0.670588, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Retry"
+
+[node name="Button2" type="Button" parent="Control/VBoxContainer"]
+margin_top = 164.0
+margin_right = 507.0
+margin_bottom = 199.0
+custom_colors/font_color_focus = Color( 0, 0.670588, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+custom_styles/normal = SubResource( 6 )
+text = "Quit"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+margin_left = 707.0
+margin_right = 771.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+margin_left = 667.0
+margin_right = 731.0
+margin_bottom = 64.0
+texture = ExtResource( 9 )
+
+[node name="Label2" type="Label" parent="Control"]
+margin_left = 588.0
+margin_top = 21.0
+margin_right = 672.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 7 )
+text = "Lives:"
