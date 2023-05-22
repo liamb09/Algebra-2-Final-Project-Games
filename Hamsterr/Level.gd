@@ -18,6 +18,9 @@ var coin = load("res://Coins/Coin.tscn")
 var truck = load("res://Enemies/Truck.tscn")
 var car = load("res://Enemies/Car.tscn")
 var EOLB_croc = load("res://EOLB_croc.tscn")
+var snake = load("res://Enemies/Snake.tscn")
+var dog = load("res://Enemies/Dog.tscn")
+var cat = load("res://Enemies/Cat.tscn")
 var timer = 0
 var counter = 1
 var log_spawn_count = 0
@@ -136,28 +139,28 @@ func _process(delta):
 		match EOLB_count:
 			1:
 				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 150
-				crocInstance.position.y = 95
+				crocInstance.position.x = 320
+				crocInstance.position.y = 100
 				add_child(crocInstance)
 			2:
 				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 300
-				crocInstance.position.y = 95
+				crocInstance.position.x = 640
+				crocInstance.position.y = 100
 				add_child(crocInstance)
 			3:
 				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 450
-				crocInstance.position.y = 85
+				crocInstance.position.x = 960
+				crocInstance.position.y = 100
 				add_child(crocInstance)
 			4:
 				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 600
-				crocInstance.position.y = 95
+				crocInstance.position.x = 1280
+				crocInstance.position.y = 100
 				add_child(crocInstance)
 			5:
 				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 750
-				crocInstance.position.y = 95
+				crocInstance.position.x = 1600
+				crocInstance.position.y = 100
 				add_child(crocInstance)
 		randomize()
 		EOLB_timer = 0
@@ -174,6 +177,8 @@ func _process(delta):
 		which_water = randi()%len(water_y)
 		spawn_entity(-188, water_y[which_water], Otter, 120)
 		otter_timer = 0
+		print("otter")
+	on_done()
 	for y in trains_y:
 		train_spawn(y)
 	if players_used == 8:
@@ -183,34 +188,39 @@ func _process(delta):
 		Players[players_used].set_process_unhandled_input(true)
 		Players[players_used].visible =  not Players[players_used].visible
 		players_used += 1
-		num_died += 1 
 		Globals.players_used = players_used
 		Globals.player_died = false
+		num_died += 1
+		print(num_died)
 	if water_y.has(int(Players[players_used-1].position.y)) == false:
 		Players[players_used-1].speed = 0
 	elif water_y.has(int(Players[players_used-1].position.y)):
 		if int(Players[players_used-1].position.x) < 16 or int(Players[players_used-1].position.x) > 884:
 			remove_child(Players[players_used-1])
 			Globals.player_died = true
+	match num_died:
+			1:
+				$Control/TextureRect.hide()
+			2:
+				$Control/TextureRect2.hide()
 	if num_died == 3:
+		Players[players_used-1].set_process_unhandled_input(false)
+		Players[players_used-1].set_process(false)
 		$Control/VBoxContainer.show()
 		$Control/VBoxContainer/Button.grab_focus()
-		Players[players_used-1].set_process_unhandled_input(false)
-	match num_died:
-		1:
-			$Control/TextureRect.hide()
-		2:
-			$Control/TextureRect2.hide()
+
+func on_done():
 	if num_completed == 5:
 		get_tree().change_scene(next_level)
-		num_completed = 0
+		Globals.player_time = timer
+
 func _ready():
 	coin_spawn()
 	var h = 0
-	var EOLB_x = 150
+	var EOLB_x = 320
 	var EOLB_y = 100  
 	while h < 5:
 		spawn_entity(EOLB_x, EOLB_y, end_of_level1, 0)
 		h+=1
-		EOLB_x += 150
-	$Control/VBoxContainer.hide()
+		EOLB_x += 320
+		$Control/VBoxContainer.hide()

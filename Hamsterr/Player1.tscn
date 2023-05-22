@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player1.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Hamster.png" type="Texture" id=2]
+[ext_resource path="res://PlayerSprite.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -22,7 +23,10 @@ extents = Vector2( 8, 8 )
 script = ExtResource( 1 )
 
 [node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 0, 4 )
+scale = Vector2( 0.546875, 0.546875 )
 texture = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -48,7 +52,16 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCollide"]
 shape = SubResource( 6 )
 
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.215
+one_shot = true
+
 [connection signal="area_entered" from="LogCollision" to="." method="_on_LogCollision_area_entered"]
 [connection signal="area_exited" from="LogCollision" to="." method="_on_LogCollision_area_exited"]
+[connection signal="body_entered" from="LogCollision" to="." method="_on_LogCollision_body_entered"]
+[connection signal="body_exited" from="LogCollision" to="." method="_on_LogCollision_body_exited"]
 [connection signal="area_entered" from="EnemyCollide" to="." method="_on_EnemyCollide_area_entered"]
+[connection signal="body_entered" from="EnemyCollide" to="." method="_on_LogCollide_body_entered"]
 [connection signal="area_entered" from="EOLBCollide" to="." method="_on_EOLBCollide_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

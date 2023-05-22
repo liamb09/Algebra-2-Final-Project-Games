@@ -10,6 +10,7 @@ var grid_speed = 200
 var target_position = Vector2()
 var is_moving = false
 
+
 onready var player1 = get_node("/root/Player1")
 
 var inputs = {"right": Vector2.RIGHT,

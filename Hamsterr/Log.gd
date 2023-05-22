@@ -18,11 +18,10 @@ func _process(delta):
 		if position.x < speed*wait_time:
 			position.x = get_viewport().size.x + 64
 			show()
-	
-	
 
 
 func _on_AlligatorReplace_body_entered(body):
+	print(body.name)
 	if "Alligator" in body.name:
 		hide()
 
@@ -31,7 +30,7 @@ func _on_OtterCollide_body_entered(body):
 		queue_free()
 
 func _on_VisibilityNotifier2D_screen_entered():
-	pass
+	show()
 
 
 func _on_Log_collide_area_entered(area):
@@ -40,7 +39,3 @@ func _on_Log_collide_area_entered(area):
 
 func _on_AlligatorReplace_body_exited(body):
 	pass
-
-
-func _on_Log_collide_area_exited(area):
-	pass # Replace with function body.
