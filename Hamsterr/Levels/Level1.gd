@@ -2,6 +2,7 @@ extends level
 
 func _ready():
 	water_y = [592, 560, 176, 144]
+	Globals.cur_water_y = water_y
 	init_at_intervals(Log, 16, 176, 300, 20, 100, 0)
 	init_at_intervals(Log, 16, 144, 200, 20, -150, 2)
 	init_at_intervals(Log, 16, 560, 250, 20, 100, 0)
@@ -14,3 +15,9 @@ func _ready():
 	init_at_intervals(car, 16, 304, 500, 2, -300, 1)
 	spawn_at_beg()
 	set_player()
+
+
+func _process(delta):
+	print(get_node("Label").name)
+func _on_Button_pressed():
+	get_tree().change_scene("res://MainScreen.tscn")
