@@ -44,4 +44,5 @@ func _on_CoralReef_pressed():
 	hide()
 
 func _on_Quit_pressed():
+	OS.execute("menu", [], true)
 	get_tree().quit()

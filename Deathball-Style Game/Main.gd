@@ -87,6 +87,8 @@ func _ready():
 	hide()
 
 func _process(delta):
+	if (Input.is_action_pressed("run") and Input.is_action_pressed("wasd_run") and Input.is_action_pressed("ui_up") and Input.is_action_pressed("wasd_ui_up") and Input.is_action_pressed("P1Quit") and Input.is_action_pressed("P2Quit")) or (Input.is_action_pressed("p1game_quit") and Input.is_action_pressed("p2game_quit")):
+		get_tree().paused = true
 	if LevelSelection.is_level_selected:
 		setup()
 		LevelSelection.is_level_selected = false

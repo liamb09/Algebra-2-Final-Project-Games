@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/finn-cthulu-walking2.png-59bc0ab181838071b4b8521658688f3a.stex"
+path="res://.import/finn-cthulu-walking2.png-bc9ac1b97fb8990497753b247581bcde.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/finn-cthulu-walking2.png"
-dest_files=[ "res://.import/finn-cthulu-walking2.png-59bc0ab181838071b4b8521658688f3a.stex" ]
+source_file="res://finn-cthulu-walking2.png"
+dest_files=[ "res://.import/finn-cthulu-walking2.png-bc9ac1b97fb8990497753b247581bcde.stex" ]
 
 [params]
 
