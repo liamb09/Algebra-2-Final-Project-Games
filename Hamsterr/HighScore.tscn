@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Font/ka1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HighScore.gd" type="Script" id=2]
@@ -12,14 +12,51 @@ font_data = ExtResource( 1 )
 size = 25
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.0196078, 0.266667, 0.447059, 1 )
+border_color = Color( 0.0509804, 0.145098, 0.521569, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.027451, 0.317647, 0.52549, 1 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="DynamicFont" id=4]
 size = 25
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.176471, 0.254902, 0.352941, 0.709804 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.164706, 0.384314, 0.670588, 0.678431 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="HighScore" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+color = Color( 0.0156863, 0.0588235, 0.270588, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -28,300 +65,437 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 900.0
-margin_bottom = 448.0
+margin_right = 1920.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
-margin_right = 900.0
-margin_bottom = 448.0
-color = Color( 0.72549, 0.0941176, 0.0941176, 1 )
+margin_right = 1920.0
+margin_bottom = 538.0
+color = Color( 0.0156863, 0.0588235, 0.270588, 1 )
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
-margin_top = 181.0
-margin_right = 900.0
-margin_bottom = 266.0
+margin_top = 226.0
+margin_right = 1920.0
+margin_bottom = 311.0
 custom_fonts/font = SubResource( 3 )
 align = 1
 valign = 1
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
-margin_top = 452.0
-margin_right = 900.0
-margin_bottom = 900.0
+margin_top = 542.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 7
 
 [node name="Button1" type="Button" parent="VBoxContainer/GridContainer"]
-margin_right = 123.0
-margin_bottom = 109.0
+margin_right = 271.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "q"
 
 [node name="Button2" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 127.0
-margin_right = 250.0
-margin_bottom = 109.0
+margin_left = 275.0
+margin_right = 546.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "w"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button3" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 254.0
-margin_right = 377.0
-margin_bottom = 109.0
+margin_left = 550.0
+margin_right = 821.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "e"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button4" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 381.0
-margin_right = 504.0
-margin_bottom = 109.0
+margin_left = 825.0
+margin_right = 1096.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "r"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button5" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 508.0
-margin_right = 630.0
-margin_bottom = 109.0
+margin_left = 1100.0
+margin_right = 1371.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "t"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button6" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 634.0
-margin_right = 756.0
-margin_bottom = 109.0
+margin_left = 1375.0
+margin_right = 1646.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "y"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button7" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 760.0
-margin_right = 900.0
-margin_bottom = 109.0
+margin_left = 1650.0
+margin_right = 1920.0
+margin_bottom = 132.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "U"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button8" type="Button" parent="VBoxContainer/GridContainer"]
-margin_top = 113.0
-margin_right = 123.0
-margin_bottom = 222.0
+margin_top = 136.0
+margin_right = 271.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "I"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button9" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 127.0
-margin_top = 113.0
-margin_right = 250.0
-margin_bottom = 222.0
+margin_left = 275.0
+margin_top = 136.0
+margin_right = 546.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "O"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button10" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 254.0
-margin_top = 113.0
-margin_right = 377.0
-margin_bottom = 222.0
+margin_left = 550.0
+margin_top = 136.0
+margin_right = 821.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "p"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button11" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 381.0
-margin_top = 113.0
-margin_right = 504.0
-margin_bottom = 222.0
+margin_left = 825.0
+margin_top = 136.0
+margin_right = 1096.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "a"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button12" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 508.0
-margin_top = 113.0
-margin_right = 630.0
-margin_bottom = 222.0
+margin_left = 1100.0
+margin_top = 136.0
+margin_right = 1371.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "s"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button13" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 634.0
-margin_top = 113.0
-margin_right = 756.0
-margin_bottom = 222.0
+margin_left = 1375.0
+margin_top = 136.0
+margin_right = 1646.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "d"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button14" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 760.0
-margin_top = 113.0
-margin_right = 900.0
-margin_bottom = 222.0
+margin_left = 1650.0
+margin_top = 136.0
+margin_right = 1920.0
+margin_bottom = 268.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "f"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button15" type="Button" parent="VBoxContainer/GridContainer"]
-margin_top = 226.0
-margin_right = 123.0
-margin_bottom = 335.0
+margin_top = 272.0
+margin_right = 271.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "_"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button16" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 127.0
-margin_top = 226.0
-margin_right = 250.0
-margin_bottom = 335.0
+margin_left = 275.0
+margin_top = 272.0
+margin_right = 546.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "g"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button17" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 254.0
-margin_top = 226.0
-margin_right = 377.0
-margin_bottom = 335.0
+margin_left = 550.0
+margin_top = 272.0
+margin_right = 821.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "h"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button18" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 381.0
-margin_top = 226.0
-margin_right = 504.0
-margin_bottom = 335.0
+margin_left = 825.0
+margin_top = 272.0
+margin_right = 1096.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "j"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button19" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 508.0
-margin_top = 226.0
-margin_right = 630.0
-margin_bottom = 335.0
+margin_left = 1100.0
+margin_top = 272.0
+margin_right = 1371.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "k"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button20" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 634.0
-margin_top = 226.0
-margin_right = 756.0
-margin_bottom = 335.0
+margin_left = 1375.0
+margin_top = 272.0
+margin_right = 1646.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "l"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button21" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 760.0
-margin_top = 226.0
-margin_right = 900.0
-margin_bottom = 335.0
+margin_left = 1650.0
+margin_top = 272.0
+margin_right = 1920.0
+margin_bottom = 403.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "Delete"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button22" type="Button" parent="VBoxContainer/GridContainer"]
-margin_top = 339.0
-margin_right = 123.0
-margin_bottom = 448.0
+margin_top = 407.0
+margin_right = 271.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "z"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button23" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 127.0
-margin_top = 339.0
-margin_right = 250.0
-margin_bottom = 448.0
+margin_left = 275.0
+margin_top = 407.0
+margin_right = 546.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "x"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button24" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 254.0
-margin_top = 339.0
-margin_right = 377.0
-margin_bottom = 448.0
+margin_left = 550.0
+margin_top = 407.0
+margin_right = 821.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "c"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button25" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 381.0
-margin_top = 339.0
-margin_right = 504.0
-margin_bottom = 448.0
+margin_left = 825.0
+margin_top = 407.0
+margin_right = 1096.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "v"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button26" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 508.0
-margin_top = 339.0
-margin_right = 630.0
-margin_bottom = 448.0
+margin_left = 1100.0
+margin_top = 407.0
+margin_right = 1371.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "b"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button27" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 634.0
-margin_top = 339.0
-margin_right = 756.0
-margin_bottom = 448.0
+margin_left = 1375.0
+margin_top = 407.0
+margin_right = 1646.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "n"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button28" type="Button" parent="VBoxContainer/GridContainer"]
-margin_left = 760.0
-margin_top = 339.0
-margin_right = 900.0
-margin_bottom = 448.0
+margin_left = 1650.0
+margin_top = 407.0
+margin_right = 1920.0
+margin_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
 text = "m"
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5
@@ -333,6 +507,8 @@ margin_top = -113.0
 margin_right = 65.5
 margin_bottom = -54.0
 custom_fonts/font = SubResource( 4 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 text = "Submit"
 
 [connection signal="pressed" from="VBoxContainer/GridContainer/Button1" to="." method="_on_Button1_pressed"]
