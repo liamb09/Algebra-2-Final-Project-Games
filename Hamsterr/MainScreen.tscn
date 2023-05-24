@@ -57,7 +57,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 2 )
 text = "Bob has left Feta at the hospital after she broke her leg. 
-However he forgot bring her back home and she hates the hospital. 
+However he forgot to bring her back home and she hates the hospital. 
 Help her find her way home!"
 align = 1
 autowrap = true
@@ -90,7 +90,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 0.937255, 0, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "Get 5 Fetas to the other 5 end points. "
+text = "Get 5 Fetas to the 5 end points. "
 align = 1
 autowrap = true
 
@@ -102,7 +102,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_colors/font_color = Color( 1, 0.937255, 0, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "Use the joystick to move her and the top button to select"
+text = "Use the joystick to move her and the left button to select"
 align = 1
 autowrap = true
 

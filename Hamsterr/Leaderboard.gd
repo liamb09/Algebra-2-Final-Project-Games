@@ -62,3 +62,10 @@ func read_to_list(file):
 			break
 	Leaderboard.close()
 	return
+
+func _unhandled_input(event):
+	event.is_action_pressed("quit")
+
+
+func _on_Return_to_homescreen_pressed():
+	get_tree().change_scene("res://MainScreen.tscn")

@@ -18,4 +18,5 @@ func _on_Button_pressed():
 
 
 func _on_Button2_pressed():
+	OS.execute("menu", [], false);
 	get_tree().quit()

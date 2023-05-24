@@ -131,13 +131,13 @@ size = 30
 font_data = ExtResource( 9 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 437.5, 7.75 )
+extents = Vector2( 928.25, 7.75 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 448.5, 19.5 )
+extents = Vector2( 957.25, 19.5 )
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 437, 19.5 )
+extents = Vector2( 953.5, 19.5 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 70
@@ -185,15 +185,15 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="EWater"]
-position = Vector2( 448, 239 )
+position = Vector2( 938.75, 239 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EWater"]
-position = Vector2( 448, -30.5 )
+position = Vector2( 956.75, -30.5 )
 shape = SubResource( 4 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="EWater"]
-position = Vector2( 448, 578 )
+position = Vector2( 964.5, 578 )
 shape = SubResource( 5 )
 
 [node name="Control" type="Control" parent="."]
@@ -228,23 +228,29 @@ text = "Quit"
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 margin_left = 1162.0
-margin_top = -3.0
+margin_top = 23.0
 margin_right = 1226.0
-margin_bottom = 61.0
+margin_bottom = 87.0
 texture = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
-margin_left = 1119.0
-margin_top = -3.0
-margin_right = 1183.0
-margin_bottom = 61.0
+margin_left = 1117.0
+margin_top = 23.0
+margin_right = 1181.0
+margin_bottom = 87.0
 texture = ExtResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Label2" type="Label" parent="Control"]
 margin_left = 1044.0
-margin_top = 21.0
+margin_top = 44.0
 margin_right = 1128.0
-margin_bottom = 45.0
+margin_bottom = 68.0
 custom_fonts/font = SubResource( 11 )
 text = "Lives:"
 

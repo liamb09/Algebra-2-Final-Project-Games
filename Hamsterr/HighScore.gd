@@ -1,11 +1,11 @@
 extends Control
 
-var Bad_words = ["ass", "fag", "dik", "nig", "fuk", "ngr", "sex", "fuc"]
+var Bad_words = ["ass", "fag", "dik", "nig", "fuk", "ngr", "sex", "fuc", "cum", "cp", "tit", "jug"]
 
 func key_press(character):
-	if len($VBoxContainer/MarginContainer/Label.text) < 3:
-		$VBoxContainer/MarginContainer/Label.text += str(character)
-		print($VBoxContainer/MarginContainer/Label.text,$VBoxContainer/GridContainer/Button1)
+	if len($Label.text) < 3:
+		$Label.text += str(character)
+		print($Label.text,$VBoxContainer/GridContainer/Button1)
 	else:
 		pass
 
@@ -92,7 +92,7 @@ func _on_Button20_pressed():
 
 
 func _on_Button21_pressed():
-	$VBoxContainer/MarginContainer/Label.text = $VBoxContainer/MarginContainer/Label.text.left(len($VBoxContainer/MarginContainer/Label.text)-1)
+	$Label.text = $Label.text.left(len($Label.text)-1)
 	
 
 
@@ -125,9 +125,9 @@ func _on_Button28_pressed():
 
 
 func _on_Button_pressed():
-	Globals.player_name = $VBoxContainer/MarginContainer/Label.text
+	Globals.player_name = $Label.text
 	if Globals.player_name in Bad_words:
-		$VBoxContainer/MarginContainer/Label.text = ""
+		$Label.text = ""
 		Globals.player_name = ""
 	else:
 		get_tree().change_scene("res://Leaderboard.tscn")
