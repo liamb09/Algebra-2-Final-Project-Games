@@ -169,8 +169,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 1807.0
-margin_top = 20.0
+margin_left = 1781.0
+margin_top = 21.0
 margin_right = 1886.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 1 )
@@ -228,9 +228,9 @@ text = "Quit"
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 margin_left = 1162.0
-margin_top = 23.0
+margin_top = 13.0
 margin_right = 1226.0
-margin_bottom = 87.0
+margin_bottom = 77.0
 texture = ExtResource( 10 )
 __meta__ = {
 "_editor_description_": ""
@@ -238,9 +238,9 @@ __meta__ = {
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
 margin_left = 1117.0
-margin_top = 23.0
+margin_top = 13.0
 margin_right = 1181.0
-margin_bottom = 87.0
+margin_bottom = 77.0
 texture = ExtResource( 10 )
 __meta__ = {
 "_editor_description_": ""
@@ -248,9 +248,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="Control"]
 margin_left = 1044.0
-margin_top = 44.0
+margin_top = 34.0
 margin_right = 1128.0
-margin_bottom = 68.0
+margin_bottom = 58.0
 custom_fonts/font = SubResource( 11 )
 text = "Lives:"
 

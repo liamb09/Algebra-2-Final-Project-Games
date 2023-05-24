@@ -24,6 +24,7 @@ func _ready():
 	init_at_intervals(Police, 16, 308, 450, 4, -300, 0)
 	spawn_entity(64, 180, Signal, 0)
 	init_at_intervals(Log, 16, 146, 200, 20, 100, 0)
+	coin_spawn()
 	spawn_at_beg()
 	set_player()
 

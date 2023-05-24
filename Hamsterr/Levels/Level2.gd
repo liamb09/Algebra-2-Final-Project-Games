@@ -22,6 +22,7 @@ func _ready():
 	init_at_intervals(Log, 16, 210, 150, 20, 150, 6)
 	init_at_intervals(Log, 16, 178, 500, 2, -350, 1)
 	init_at_intervals(Log, 16, 146, 240, 4, 200, 3)
+	coin_spawn()
 	spawn_at_beg()
 	set_player()
 	

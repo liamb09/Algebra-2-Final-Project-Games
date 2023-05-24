@@ -8,7 +8,7 @@ func _ready():
 	score_file.open("res://Leaderboards/Leaderboard.txt", File.READ)
 	while not score_file.eof_reached():
 		var line = score_file.get_line()
-		var 	times = line.get_slice('-', 1)
+		var times = line.get_slice('-', 1)
 		time_list.append(times)
 	time_list.sort()
 	$VBoxContainer/Label6.text += time_list[0]

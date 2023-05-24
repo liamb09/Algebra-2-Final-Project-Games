@@ -13,6 +13,7 @@ func _ready():
 	init_at_intervals(Firetruck, 16, 432, 500, 5, 100, 0)
 	init_at_intervals(Ambulance, 16, 400, 300, 3, -120, 2)
 	init_at_intervals(car, 16, 304, 500, 2, -300, 1)
+	coin_spawn()
 	spawn_at_beg()
 	set_player()
 

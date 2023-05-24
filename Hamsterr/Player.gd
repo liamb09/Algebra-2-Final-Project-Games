@@ -43,7 +43,7 @@ func _unhandled_input(event):
 
 func _process(delta):
 	position.x = clamp(position.x, 0+16, get_viewport().size.x-16)
-	#position.y = clamp(position.y, 0+16, get_viewport().size.y-16)
+	position.y = clamp(position.y, 0+16, get_viewport().size.y-16)
 	position.x += speed*delta
 	#if is_moving:
 	#	var current_position = position

@@ -116,6 +116,8 @@ func _spawn_new_(area):
 		Players[players_used].set_process(true)
 		Players[players_used].set_process_unhandled_input(true)
 		Players[players_used].visible =  not Players[players_used].visible
+		get_node(str(Players[players_used-1].get_path()) + "/PlayerSprite").set_process_unhandled_input(false)
+		get_node(str(Players[players_used-1].get_path()) + "/PlayerSprite").rotation_degree = 90
 		players_used += 1
 		num_completed += 1
 
@@ -195,7 +197,7 @@ func _process(delta):
 	if water_y.has(int(Players[players_used-1].position.y)) == false:
 		Players[players_used-1].speed = 0
 	elif water_y.has(int(Players[players_used-1].position.y)):
-		if int(Players[players_used-1].position.x) < 16 or int(Players[players_used-1].position.x) > 884:
+		if int(Players[players_used-1].position.x) < 16 or int(Players[players_used-1].position.x) > 1904:
 			remove_child(Players[players_used-1])
 			Globals.player_died = true
 	match num_died:

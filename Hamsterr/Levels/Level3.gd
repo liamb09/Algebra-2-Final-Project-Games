@@ -23,6 +23,7 @@ func _ready():
 	init_at_intervals(cat, 16, 240, 0, 1, 210, 0)
 	init_at_intervals(Log, 16, 500, 200, 20, 150, 0)
 	spawn_entity(-188, 176, Alligator, 100)
+	coin_spawn()
 	spawn_at_beg()
 	set_player()
 
