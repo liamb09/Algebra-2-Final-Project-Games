@@ -186,12 +186,12 @@ shape = SubResource( 3 )
 position = Vector2( 957.75, 566 )
 shape = SubResource( 4 )
 
-[node name="Control" type="Control" parent="."]
+[node name="GUI" type="Control" parent="."]
 margin_left = 416.0
 margin_right = 1414.0
 margin_bottom = 892.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
 margin_left = 200.0
 margin_top = 300.0
 margin_right = 707.0
@@ -200,14 +200,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 25
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+[node name="Label2" type="Label" parent="GUI/VBoxContainer"]
 margin_right = 507.0
 margin_bottom = 79.0
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "Game over"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer"]
+[node name="Button" type="Button" parent="GUI/VBoxContainer"]
 margin_top = 104.0
 margin_right = 507.0
 margin_bottom = 139.0
@@ -216,7 +216,7 @@ custom_fonts/font = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
 text = "Quit"
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="GUI"]
 margin_left = 1162.0
 margin_top = 13.0
 margin_right = 1226.0
@@ -226,7 +226,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="TextureRect2" type="TextureRect" parent="Control"]
+[node name="TextureRect2" type="TextureRect" parent="GUI"]
 margin_left = 1117.0
 margin_top = 13.0
 margin_right = 1181.0
@@ -236,7 +236,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Label2" type="Label" parent="Control"]
+[node name="Label2" type="Label" parent="GUI"]
 margin_left = 1030.0
 margin_top = 36.0
 margin_right = 1114.0
@@ -249,4 +249,4 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GUI/VBoxContainer/Button" to="." method="_on_Button_pressed"]

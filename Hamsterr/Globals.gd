@@ -9,3 +9,4 @@ var on_log = false
 var Players
 var players_used = 1
 var cur_water_y
+var taken_eolbs = []

@@ -117,7 +117,7 @@ func _spawn_new_(area):
 		Players[players_used].set_process_unhandled_input(true)
 		Players[players_used].visible =  not Players[players_used].visible
 		get_node(str(Players[players_used-1].get_path()) + "/PlayerSprite").set_process_unhandled_input(false)
-		get_node(str(Players[players_used-1].get_path()) + "/PlayerSprite").rotation_degree = 90
+		get_node(str(Players[players_used-1].get_path()) + "/PlayerSprite").rotation_degrees = 90
 		players_used += 1
 		num_completed += 1
 
@@ -136,40 +136,45 @@ func _process(delta):
 	otter_timer += delta
 	timer = stepify(timer, 0.01)
 	$Label.text = str(timer)
-	if int(EOLB_timer) == 3 and EOLB_timer != 0:
+	print(Globals.taken_eolbs)
+	if int(EOLB_timer) == 8 and EOLB_timer != 0:
 		EOLB_count = 1+randi()%5
-		match EOLB_count:
-			1:
-				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 320
-				crocInstance.position.y = 100
-				add_child(crocInstance)
-			2:
-				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 640
-				crocInstance.position.y = 100
-				add_child(crocInstance)
-			3:
-				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 960
-				crocInstance.position.y = 100
-				add_child(crocInstance)
-			4:
-				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 1280
-				crocInstance.position.y = 100
-				add_child(crocInstance)
-			5:
-				crocInstance = EOLB_croc.instance()
-				crocInstance.position.x = 1600
-				crocInstance.position.y = 100
-				add_child(crocInstance)
-		randomize()
-		EOLB_timer = 0
-		croc_is_active = true
+		if EOLB_count in Globals.taken_eolbs:
+			randomize()
+			EOLB_count = 1+randi()%5
+		else:
+			match EOLB_count:
+				1:
+					crocInstance = EOLB_croc.instance()
+					crocInstance.position.x = 320
+					crocInstance.position.y = 100
+					add_child(crocInstance)
+				2:
+					crocInstance = EOLB_croc.instance()
+					crocInstance.position.x = 640
+					crocInstance.position.y = 100
+					add_child(crocInstance)
+				3:
+					crocInstance = EOLB_croc.instance()
+					crocInstance.position.x = 960
+					crocInstance.position.y = 100
+					add_child(crocInstance)
+				4:
+					crocInstance = EOLB_croc.instance()
+					crocInstance.position.x = 1280
+					crocInstance.position.y = 100
+					add_child(crocInstance)
+				5:
+					crocInstance = EOLB_croc.instance()
+					crocInstance.position.x = 1600
+					crocInstance.position.y = 100
+					add_child(crocInstance)
+			randomize()
+			EOLB_timer = 0
+			croc_is_active = true
 	if croc_is_active:
 		croc_timer += delta
-	if int(croc_timer) == 2:
+	if int(croc_timer) == 4:
 		remove_child(crocInstance)
 		croc_timer = 0
 		croc_is_active = false
@@ -202,14 +207,14 @@ func _process(delta):
 			Globals.player_died = true
 	match num_died:
 			1:
-				$Control/TextureRect.hide()
+				$GUI/TextureRect.hide()
 			2:
-				$Control/TextureRect2.hide()
+				$GUI/TextureRect2.hide()
 	if num_died == 3:
 		Players[players_used-1].set_process_unhandled_input(false)
 		Players[players_used-1].set_process(false)
-		$Control/VBoxContainer.show()
-		$Control/VBoxContainer/Button.grab_focus()
+		$GUI/VBoxContainer.show()
+		$GUI/VBoxContainer/Button.grab_focus()
 
 func on_done():
 	if num_completed == 5:
@@ -225,4 +230,4 @@ func _ready():
 		spawn_entity(EOLB_x, EOLB_y, end_of_level1, 0)
 		h+=1
 		EOLB_x += 320
-		$Control/VBoxContainer.hide()
+		$GUI/VBoxContainer.hide()

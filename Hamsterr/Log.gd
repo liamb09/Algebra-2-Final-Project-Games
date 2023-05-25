@@ -11,7 +11,7 @@ func _ready():
 func _process(delta):
 	position.x += speed*delta
 	if speed > 0:
-		if stepify(position.x, 2) == get_viewport().size.x+(speed*wait_time)+64:
+		if stepify(position.x, 2) > get_viewport().size.x+(speed*wait_time)+64:
 			position.x = -64
 			show()
 	elif speed < 0:

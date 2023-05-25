@@ -60,5 +60,4 @@ func EOLB_hit(Player, the_EOLB, start):
 		the_EOLB.status[i] = false
 	set_process_unhandled_input(false)
 	set_process(false)
-	
-
+		

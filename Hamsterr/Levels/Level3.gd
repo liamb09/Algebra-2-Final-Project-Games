@@ -26,6 +26,7 @@ func _ready():
 	coin_spawn()
 	spawn_at_beg()
 	set_player()
+	move_child(get_node("GUI"), get_child_count())
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://MainScreen.tscn")

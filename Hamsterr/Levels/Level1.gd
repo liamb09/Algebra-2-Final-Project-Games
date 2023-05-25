@@ -16,6 +16,10 @@ func _ready():
 	coin_spawn()
 	spawn_at_beg()
 	set_player()
+	#print_tree_pretty()
+	move_child(get_node("GUI"), get_child_count())
+	print($GUI.get_position_in_parent())
+	print_tree_pretty()
 
 
 func _process(delta):

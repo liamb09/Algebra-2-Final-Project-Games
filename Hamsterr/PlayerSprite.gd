@@ -1,8 +1,5 @@
 extends Sprite
 
-func _process(delta):
-	print(self.get_path())
-
 func _unhandled_input(event):
 	if event.is_action_pressed("right"):
 		flip_h = false
